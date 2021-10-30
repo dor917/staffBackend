@@ -1,9 +1,9 @@
 package com.staff.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Getter
-@Setter
 @Data
 public class UserVO {
 	private String no;
