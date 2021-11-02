@@ -1,4 +1,4 @@
-package com.staff.controller.UserController;
+package com.staff.controller.PageController;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -28,7 +28,6 @@ public class UserController {
 	UserDAO userDAO;
 
 	@PostMapping("/login.do")
-	
 	public RedirectView Login(UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
 		try {
 			HttpSession session = req.getSession();
