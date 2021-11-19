@@ -8,10 +8,13 @@ import java.net.Socket;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.jcraft.jsch.JSch;
+import com.staff.model.ChatVO;
 import com.staff.util.ListeningThread;
 import com.staff.util.SFTPUtil;
 import com.staff.util.WritingThread;
@@ -28,8 +31,8 @@ public class ChatContaller {
 	
 		return "aa";
 	}
-	@GetMapping("/sendChat.do")
-	public String SendChat(@RequestParam("userId") String userId, @RequestParam("message") String message) {
+	@PostMapping("/sendChat.do")
+	public String SendChat(@RequestBody ChatVO chatVO) {
 		try {
 			// OutputStream - 클라이언트에서 Server로 메세지 발송 
             		// socket의 OutputStream 정보를 OutputStream out에 넣은 뒤
@@ -37,7 +40,7 @@ public class ChatContaller {
 			OutputStreamWriter outw = new OutputStreamWriter(out, "UTF-8");
             		// PrintWriter에 위 OutputStream을 담아 사용
 			PrintWriter writer = new PrintWriter(outw, true);
-			writer.println(userId + " : " + message); // 입력한 메세지 발송
+			writer.println(chatVO.getUserId() + " : " + chatVO.getMessage()); // 입력한 메세지 발송
 
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
