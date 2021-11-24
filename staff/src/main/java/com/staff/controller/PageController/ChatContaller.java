@@ -5,14 +5,17 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.fasterxml.jackson.core.JsonParser;
 import com.jcraft.jsch.JSch;
 import com.staff.model.ChatVO;
 import com.staff.util.ListeningThread;
@@ -32,7 +35,9 @@ public class ChatContaller {
 		return "aa";
 	}
 	@PostMapping("/sendChat.do")
-	public String SendChat(@RequestBody ChatVO chatVO) {
+	@ResponseBody
+	public ChatVO sendChat(@RequestBody Map<String, Map> param) {
+		ChatVO chatVO = new ChatVO();
 		try {
 			// OutputStream - 클라이언트에서 Server로 메세지 발송 
             		// socket의 OutputStream 정보를 OutputStream out에 넣은 뒤
@@ -40,13 +45,14 @@ public class ChatContaller {
 			OutputStreamWriter outw = new OutputStreamWriter(out, "UTF-8");
             		// PrintWriter에 위 OutputStream을 담아 사용
 			PrintWriter writer = new PrintWriter(outw, true);
-			writer.println(chatVO.getUserId() + " : " + chatVO.getMessage()); // 입력한 메세지 발송
-
+			writer.println(param.get("userId").get("userId") + " : " + param.get("message").get("message")); // 입력한 메세지 발송
+			chatVO.setUserId((String) param.get("userId").get("userId"));
+			chatVO.setMessage((String) param.get("message").get("message"));
 		} catch (Exception e) {
 			e.printStackTrace(); // 예외처리
 		}
 		
-		return "aa";
+		return chatVO;
 	}
 	@GetMapping("/Chat")
 	public String Chat() {
