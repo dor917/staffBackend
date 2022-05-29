@@ -29,32 +29,32 @@ public class UserController {
 
 	@PostMapping("/login.do")
 	public RedirectView Login(UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
-		try {
-			HttpSession session = req.getSession();
-
-			UserVO loginUser = userDAO.Login(userVO);
-			
-			if (loginUser == null) {
-				rttr.addFlashAttribute("msg", false);
-				
-			} else {
-				session.setAttribute("userNo", loginUser.getNo());
-				session.setAttribute("userId", loginUser.getId());
-				session.setAttribute("userPassword", loginUser.getPassword());
-				Cookie userNoCookie = new Cookie("USERNO", 
-						URLEncoder.encode(loginUser.getNo(),"utf-8" ));
-				Cookie userIdCookie = new Cookie("USERID", 
-						URLEncoder.encode(loginUser.getId(), "utf-8" ));
-//				Cookie userPwCookie = new Cookie("USER", 
-//						URLEncoder.encode("userNo:" + loginUser.getNo()+";"+"userId:" + loginUser.getId()+";"+"userPw:" + loginUser.getPassword()+";",
-//								"utf-8" ));
-				res.addCookie(userNoCookie);
-				res.addCookie(userIdCookie);
-				return new RedirectView("http://localhost:3000/Main");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			HttpSession session = req.getSession();
+//
+//			UserVO loginUser = userDAO.Login(userVO);
+//			
+//			if (loginUser == null) {
+//				rttr.addFlashAttribute("msg", false);
+//				
+//			} else {
+//				session.setAttribute("userNo", loginUser.getNo());
+//				session.setAttribute("userId", loginUser.getId());
+//				session.setAttribute("userPassword", loginUser.getPassword());
+//				Cookie userNoCookie = new Cookie("USERNO", 
+//						URLEncoder.encode(loginUser.getNo(),"utf-8" ));
+//				Cookie userIdCookie = new Cookie("USERID", 
+//						URLEncoder.encode(loginUser.getId(), "utf-8" ));
+////				Cookie userPwCookie = new Cookie("USER", 
+////						URLEncoder.encode("userNo:" + loginUser.getNo()+";"+"userId:" + loginUser.getId()+";"+"userPw:" + loginUser.getPassword()+";",
+////								"utf-8" ));
+//				res.addCookie(userNoCookie);
+//				res.addCookie(userIdCookie);
+//				return new RedirectView("http://localhost:3000/Main");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		return new RedirectView("http://localhost:3000/Login");
 		
 
