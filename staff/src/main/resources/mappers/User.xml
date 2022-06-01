@@ -3,8 +3,40 @@
 
 <mapper namespace="com.staff.dao.UserDAO">
     <select id="Login" parameterType="com.staff.model.UserVO" resultType="com.staff.model.UserVO">
-        SELECT no, id, password, cre_date
-        FROM dba_staff.USERS
-        WHERE id = #{id} AND password = #{password}
+        SELECT
+       			mbr_no, 
+       			mbr_nm, 
+       			mbr_email, 
+       			mbr_pw, 
+       			mbr_phone, 
+       			mbr_cont, 
+       			mbr_addr, 
+       			mbr_web, 
+       			mbr_twit, 
+       			mbr_insta, 
+       			mbr_face, 
+       			mbr_brd, 
+       			sys_reg_date
+        FROM dba_staff.MBR_BASE
+        WHERE MBR_EMAIL = #{mbr_email} AND MBR_PW = #{mbr_pw}
+    </select>
+    
+    <select id="getUserInfo" parameterType="com.staff.model.UserVO" resultType="com.staff.model.UserVO">
+        SELECT
+       			mbr_no, 
+       			mbr_nm, 
+       			mbr_email, 
+       			mbr_pw, 
+       			mbr_phone, 
+       			mbr_cont, 
+       			mbr_addr, 
+       			mbr_web, 
+       			mbr_twit, 
+       			mbr_insta, 
+       			mbr_face, 
+       			mbr_brd, 
+       			sys_reg_date
+        FROM dba_staff.MBR_BASE
+        WHERE MBR_NO = #{mbr_no}
     </select>
 </mapper>

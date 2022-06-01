@@ -27,38 +27,86 @@ public class UserController {
 	@Autowired
 	UserDAO userDAO;
 
-	@PostMapping("/login.do")
-	public RedirectView Login(UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
-//		try {
-//			HttpSession session = req.getSession();
-//
-//			UserVO loginUser = userDAO.Login(userVO);
-//			
-//			if (loginUser == null) {
-//				rttr.addFlashAttribute("msg", false);
-//				
-//			} else {
-//				session.setAttribute("userNo", loginUser.getNo());
-//				session.setAttribute("userId", loginUser.getId());
-//				session.setAttribute("userPassword", loginUser.getPassword());
-//				Cookie userNoCookie = new Cookie("USERNO", 
-//						URLEncoder.encode(loginUser.getNo(),"utf-8" ));
-//				Cookie userIdCookie = new Cookie("USERID", 
-//						URLEncoder.encode(loginUser.getId(), "utf-8" ));
-////				Cookie userPwCookie = new Cookie("USER", 
-////						URLEncoder.encode("userNo:" + loginUser.getNo()+";"+"userId:" + loginUser.getId()+";"+"userPw:" + loginUser.getPassword()+";",
-////								"utf-8" ));
-//				res.addCookie(userNoCookie);
-//				res.addCookie(userIdCookie);
-//				return new RedirectView("http://localhost:3000/Main");
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+	@PostMapping("/gologin.staff")
+	public RedirectView goLogin (UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
+		try {
+			HttpSession session = req.getSession();
+
+			UserVO loginUser = userDAO.Login(userVO);
+			
+			if (loginUser == null) {
+				rttr.addFlashAttribute("msg", false);
+				
+			} else {
+				session.setAttribute("userInfo", loginUser.toString());
+				Cookie userInfo = new Cookie("userInfo", 
+						URLEncoder.encode(String.valueOf(loginUser.getMbr_no()), "utf-8" ));
+				res.addCookie(userInfo);
+				return new RedirectView("http://localhost:3000/Main");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return new RedirectView("http://localhost:3000/Login");
 		
 
 	}
+	@PostMapping("/getUserInfo.staff")
+	public RedirectView getUserInfo (UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
+		try {
+			HttpSession session = req.getSession();
+
+			UserVO loginUser = userDAO.Login(userVO);
+			
+			if (loginUser == null) {
+				rttr.addFlashAttribute("msg", false);
+				
+			} else {
+				session.setAttribute("userInfo", loginUser.toString());
+				Cookie userInfo = new Cookie("userInfo", 
+						URLEncoder.encode(String.valueOf(loginUser.getMbr_no()), "utf-8" ));
+				res.addCookie(userInfo);
+				return new RedirectView("http://localhost:3000/Main");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new RedirectView("http://localhost:3000/Login");
+		
+
+	}
+//	@PostMapping("/gologin.staff")
+//	public RedirectView Login(UserVO userVO, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res){
+////		try {
+////			HttpSession session = req.getSession();
+////
+////			UserVO loginUser = userDAO.Login(userVO);
+////			
+////			if (loginUser == null) {
+////				rttr.addFlashAttribute("msg", false);
+////				
+////			} else {
+////				session.setAttribute("userNo", loginUser.getNo());
+////				session.setAttribute("userId", loginUser.getId());
+////				session.setAttribute("userPassword", loginUser.getPassword());
+////				Cookie userNoCookie = new Cookie("USERNO", 
+////						URLEncoder.encode(loginUser.getNo(),"utf-8" ));
+////				Cookie userIdCookie = new Cookie("USERID", 
+////						URLEncoder.encode(loginUser.getId(), "utf-8" ));
+//////				Cookie userPwCookie = new Cookie("USER", 
+//////						URLEncoder.encode("userNo:" + loginUser.getNo()+";"+"userId:" + loginUser.getId()+";"+"userPw:" + loginUser.getPassword()+";",
+//////								"utf-8" ));
+////				res.addCookie(userNoCookie);
+////				res.addCookie(userIdCookie);
+////				return new RedirectView("http://localhost:3000/Main");
+////			}
+////		} catch (Exception e) {
+////			e.printStackTrace();
+////		}
+//		return new RedirectView("http://localhost:3000/Login");
+//		
+//
+//	}
 
 	@GetMapping("/hello")
 	public String hello(HttpServletRequest req) {
