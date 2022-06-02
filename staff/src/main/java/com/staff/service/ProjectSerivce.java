@@ -1,5 +1,14 @@
 package com.staff.service;
 
-public interface ProjectSerivce {
+import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
+import com.staff.model.ProjectVO;
+
+
+
+public interface ProjectSerivce {
+	
+	public ArrayList<ProjectVO> getMbrProjectList(String mbr_no);
 }

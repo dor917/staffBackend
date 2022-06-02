@@ -1,8 +1,22 @@
 package com.staff.service;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.staff.dao.ProjectDAO;
+import com.staff.model.ProjectVO;
 
 @Service
 public class ProjectServiceImpl implements ProjectSerivce{
+
+	@Autowired
+	ProjectDAO projectDAO;
+	
+	@Override
+	public ArrayList<ProjectVO> getMbrProjectList(String mbr_no) {
+		return projectDAO.getMbrProjectList(mbr_no);
+	}
 
 }

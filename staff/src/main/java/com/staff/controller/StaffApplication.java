@@ -18,7 +18,7 @@ import com.staff.util.ListeningThread;
 import com.staff.util.WritingThread;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.staff.controller.PageController", "com.staff.service", "com.staff.dao"})
 public class StaffApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StaffApplication.class, args);

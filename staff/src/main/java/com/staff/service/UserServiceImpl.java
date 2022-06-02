@@ -2,21 +2,22 @@ package com.staff.service;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.User;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.staff.dao.UserDAO;
+import com.staff.dao.MemberDAO;
 import com.staff.model.UserVO;
 
 @Service
+@MapperScan(basePackages = "com.staff.dao")
 public class UserServiceImpl implements UserService{
 	@Autowired
-	UserDAO userDAO;
+	MemberDAO memberDAO;
 
 	@Override
-	public UserVO Login(UserVO userVO) {
-		UserVO loginUser = userDAO.Login(userVO);
+	public UserVO goLogin(UserVO userVO) {
+		UserVO loginUser = memberDAO.goLogin(userVO);
 		return loginUser;
 	}
 

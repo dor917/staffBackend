@@ -2,7 +2,10 @@ package com.staff.model;
 
 import java.sql.Date;
 
-public class ProjectVo {
+import lombok.Data;
+
+@Data
+public class ProjectVO {
 	
 	private int prj_no;
 	private int prj_prog;
