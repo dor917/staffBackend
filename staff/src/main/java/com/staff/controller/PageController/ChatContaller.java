@@ -32,11 +32,23 @@ public class ChatContaller {
 	Socket socket = null;
 	@RequestMapping("/sendChat.staff")
 	public String chatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String ip = "3.36.120.248";
-        int port = 1213;
-        String message = "1!@##@!testID!@##@!sdsadasdasdasdas";
-        connChatServer(ip, port, message);
-		return "aa";
+		try {
+			String ip = "3.36.120.248";
+	        int port = 1213;
+	        String prj_no = req.getParameter("prj_no");
+			String mbr_email = req.getParameter("mbr_email");
+			String message = req.getParameter("message");
+		
+	        String sendMessage = prj_no + "!@##@!" + mbr_email +"!@##@!" + message;
+	        
+	        System.out.println(sendMessage);
+	        connChatServer(ip, port, sendMessage);
+	        return "success";
+		} catch (Exception e) {
+			return "fali";
+		}
+		
+		
 	}
 	public void connChatServer(String ip, int port, String message) {
 		Socket socket = null;
