@@ -1,6 +1,7 @@
 package com.staff.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import lombok.Data;
 
@@ -14,7 +15,7 @@ public class ProjectVO {
 	private String prj_expl;
 	
 	private Date prj_start_date;
-	private Date prj_end_Date;
+	private Date prj_end_date;
 	private Date sys_reg_date;
 	
 	

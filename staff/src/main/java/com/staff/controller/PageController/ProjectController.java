@@ -1,6 +1,7 @@
 package com.staff.controller.PageController;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.Cookie;
@@ -45,9 +46,33 @@ public class ProjectController {
 			e.printStackTrace();
 		}
 		return resultArr;
-		
-		
+	
 	}
 	
+	@RequestMapping("/updateProjectInfo.staff")
+	public void updateProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		// 1, 파라미터 받아오기
+		String prj_no = req.getParameter("prj_no");
+		String prj_nm = req.getParameter("prj_nm");
+		String prj_expl = req.getParameter("prj_expl");
+		String prj_prog = req.getParameter("prj_prog");
+		String prj_start_date = req.getParameter("prj_start_date");
+		String prj_end_date = req.getParameter("prj_end_date");
+		
 
-}
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+		ProjectVO uptProjectVO = new ProjectVO();
+		uptProjectVO.setPrj_no(Integer.valueOf(prj_no));
+		uptProjectVO.setPrj_nm(prj_nm);
+		uptProjectVO.setPrj_expl(prj_expl);
+		uptProjectVO.setPrj_prog(Integer.valueOf(prj_prog));
+		uptProjectVO.setPrj_start_date(formatter.parse(prj_start_date));
+		uptProjectVO.setPrj_end_date(formatter.parse(prj_end_date));
+		
+
+		int check = projectService.updateProjectInfo(uptProjectVO);
+	
+
+	}
+}	

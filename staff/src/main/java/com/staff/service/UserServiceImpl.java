@@ -25,6 +25,10 @@ public class UserServiceImpl implements UserService{
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
+	@Override
+	public int updateMbrInfo(UserVO uptUserVO) {
+		return memberDAO.updateMbrInfo(uptUserVO);
+	}
 	
 	
 }
