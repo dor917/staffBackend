@@ -11,4 +11,5 @@ import com.staff.model.ProjectVO;
 public interface ProjectSerivce {
 	
 	public ArrayList<ProjectVO> getMbrProjectList(String mbr_no);
+	public int updateProjectInfo(ProjectVO uptProjectVO);
 }

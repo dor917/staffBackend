@@ -1,6 +1,6 @@
 package com.staff.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
 import lombok.Getter;

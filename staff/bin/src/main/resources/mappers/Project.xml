@@ -9,7 +9,7 @@
 				prj_nm,
 				prj_expl,
 				prj_start_date,
-				prj_end_date,
+				prj_end_Date,
 				sys_reg_date
 		FROM
 			PRJ_BASE
@@ -24,18 +24,5 @@
 				MBR_NO = #{mbr_no})
 		
 	</select>
-	
-	    <update id="updateProjectInfo" parameterType="com.staff.model.ProjectVO">
-     UPDATE PRJ_BASE
-	    SET
-	       	prj_no = #{prj_no}, 
-	       	prj_prog = #{prj_prog}, 
-	       	prj_nm = #{prj_nm}, 
-	       	prj_expl = #{prj_expl}, 
-	       	prj_start_date = #{prj_start_date}, 
-	       	prj_end_date = #{prj_end_date}
-	       	
-	    WHERE prj_no = #{prj_no}
-    </update>
 
 </mapper>

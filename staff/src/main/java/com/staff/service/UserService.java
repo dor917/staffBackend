@@ -13,4 +13,5 @@ import com.staff.model.UserVO;
 public interface UserService {
 	public UserVO goLogin(UserVO userVO);
 	public void logout(HttpSession session);
+	public int updateMbrInfo(UserVO uptUserVO);
 }

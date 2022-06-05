@@ -19,4 +19,11 @@ public class ProjectServiceImpl implements ProjectSerivce{
 		return projectDAO.getMbrProjectList(mbr_no);
 	}
 
+	@Override
+	public int updateProjectInfo(ProjectVO uptProjectVO) {
+		return projectDAO.updateProjectInfo(uptProjectVO);
+	}
+
+
+
 }
