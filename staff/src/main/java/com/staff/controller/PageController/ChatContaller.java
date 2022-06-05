@@ -38,6 +38,7 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+import com.staff.model.ChatListVo;
 import com.staff.model.ChatVo;
 import com.staff.util.ListeningThread;
 import com.staff.util.SFTPUtil;
@@ -71,9 +72,9 @@ public class ChatContaller {
 	}
 
 	@RequestMapping("/getChatHistory.staff")
-	public ArrayList<Map<String, List<ChatVo>>> getChatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ArrayList<Map<String, List<ChatVo>>> result = new ArrayList<>();
-		Map<String, List<ChatVo>> resultMap = new HashMap<>();
+	public ArrayList<ChatListVo> getChatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		 res.setHeader("Access-Control-Allow-Origin", "*"); //허용대상 도메인
+		ArrayList<ChatListVo> result = new ArrayList<>();
 		String id = "staff";
 		Session session = null;
 		JSch jSch = null;
@@ -114,9 +115,6 @@ public class ChatContaller {
 		         }
 			}
 			Collections.sort(fileList);
-			for (String test : fileList) {
-				System.out.println(test);
-			}
 			// 4. return 설정
 			
 			if(fileList.size() > 0) {
@@ -128,7 +126,8 @@ public class ChatContaller {
 						date = simpleDateFormat.parse(file);
 						dateStr = changeSimpleDateFormat.format(date);
 					}
-					List<ChatVo> reListList  = new ArrayList<>();
+					ChatListVo chatListVo = new ChatListVo();
+					ArrayList<ChatVo> reListList  = new ArrayList<>();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(channelSftp.get(file)));
 					while((readStr = reader.readLine()) != null && !"".equals(readStr)) {
 						String[] chatArr = readStr.split("!@##@!");
@@ -138,14 +137,15 @@ public class ChatContaller {
 						chatVo.setMessage(chatArr[1]);
 						reListList.add(chatVo);
 					}
-					resultMap.put(dateStr, reListList);
-					
+					chatListVo.setDate(dateStr);
+					chatListVo.setChatList(reListList);
+					result.add(chatListVo);
 					
 				}
 				
 			}
 
-			result.add(resultMap);
+			
 			
 			
 			
