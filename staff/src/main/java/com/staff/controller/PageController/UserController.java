@@ -80,7 +80,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/updateMbrInfo.staff")
-	public void goLogin(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+	public void updateMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		// 1, 파라미터 받아오기
 		String mbr_no = req.getParameter("mbr_no");
 		String mbr_nm = req.getParameter("mbr_nm");
@@ -112,13 +112,40 @@ public class UserController {
 		uptUserVO.setMbr_insta(mbr_insta);
 		System.out.println(uptUserVO.toString());
 
-		int check = userService.updateMbrInfo(uptUserVO);
-
-		// 2. 서비스 전송
-
-		// 3. 성공일 경우
-//		goLogin(req, rttr, res);
-
+		userService.updateMbrInfo(uptUserVO);
 	}
-
+	
+	@RequestMapping("/insertMbrInfo.staff")
+	public void insertMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		String mbr_no = req.getParameter("mbr_no");
+		String mbr_nm = req.getParameter("mbr_nm");
+		String mbr_email = req.getParameter("mbr_email");
+		String mbr_pw = req.getParameter("mbr_pw");
+		String mbr_brd = req.getParameter("mbr_brd");
+		String mbr_phone = req.getParameter("mbr_phone");
+		String mbr_cont = req.getParameter("mbr_cont");
+		String mbr_addr = req.getParameter("mbr_addr");
+		String mbr_web = req.getParameter("mbr_web");
+		String mbr_twit = req.getParameter("mbr_twit");
+		String mbr_face = req.getParameter("mbr_face");
+		String mbr_insta = req.getParameter("mbr_insta");
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		UserVO intUserVO = new UserVO();
+		intUserVO.setMbr_no(Integer.valueOf(mbr_no));
+		intUserVO.setMbr_nm(mbr_nm);
+		intUserVO.setMbr_email(mbr_email);
+		intUserVO.setMbr_pw(mbr_pw);
+		intUserVO.setMbr_brd(formatter.parse(mbr_brd));
+		intUserVO.setMbr_phone(mbr_phone);
+		intUserVO.setMbr_cont(mbr_cont);
+		intUserVO.setMbr_addr(mbr_addr);
+		intUserVO.setMbr_web(mbr_web);
+		intUserVO.setMbr_twit(mbr_twit);
+		intUserVO.setMbr_face(mbr_face);
+		intUserVO.setMbr_insta(mbr_insta);
+		
+		userService.insertMbrInfo(intUserVO);
+	}
 }

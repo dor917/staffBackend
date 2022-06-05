@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.staff.dao.ProjectDAO;
+import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
 
 @Service
@@ -22,6 +23,16 @@ public class ProjectServiceImpl implements ProjectSerivce{
 	@Override
 	public int updateProjectInfo(ProjectVO uptProjectVO) {
 		return projectDAO.updateProjectInfo(uptProjectVO);
+	}
+
+	@Override
+	public int insertProjectInfo(PrjMbrVO intProjectVO) {
+		return projectDAO.insertProjectInfo(intProjectVO);
+	}
+
+	@Override
+	public int deleteProjectInfo(PrjMbrVO detProjectVO) {
+		return projectDAO.deleteProjectInfo(detProjectVO);
 	}
 
 

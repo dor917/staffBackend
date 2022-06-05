@@ -1,31 +1,21 @@
 package com.staff.controller.PageController;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
-import com.staff.model.UserVO;
 import com.staff.service.ProjectServiceImpl;
-import com.staff.service.UserServiceImpl;
 
 @RestController
 @MapperScan(basePackages = "com.staff.service")
@@ -70,9 +60,34 @@ public class ProjectController {
 		uptProjectVO.setPrj_start_date(formatter.parse(prj_start_date));
 		uptProjectVO.setPrj_end_date(formatter.parse(prj_end_date));
 		
-
-		int check = projectService.updateProjectInfo(uptProjectVO);
+		projectService.updateProjectInfo(uptProjectVO);
+		
+	}
 	
-
+	@RequestMapping("/insertProjectInfo.staff")
+	public void insertProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		String mbr_no = req.getParameter("mbr_no");
+		String prj_no = req.getParameter("prj_no");
+		String mbr_posi = req.getParameter("mbr_posi");
+		
+		PrjMbrVO intProjectVO = new PrjMbrVO();
+		intProjectVO.setMbr_no(Integer.valueOf(mbr_no));
+		intProjectVO.setPrj_no(Integer.valueOf(prj_no));
+		intProjectVO.setMbr_posi(Integer.valueOf(mbr_posi));
+		
+		projectService.insertProjectInfo(intProjectVO);
+		
+	}
+	
+	@RequestMapping("/deleteProjectInfo.staff")
+	public void deleteProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		String mbr_no = req.getParameter("mbr_no");
+		String prj_no = req.getParameter("prj_no");
+		
+		PrjMbrVO detProjectVO = new PrjMbrVO();
+		detProjectVO.setMbr_no(Integer.valueOf(mbr_no));
+		detProjectVO.setPrj_no(Integer.valueOf(prj_no));
+		
+		projectService.deleteProjectInfo(detProjectVO);
 	}
 }	

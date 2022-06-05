@@ -10,5 +10,7 @@ public interface MemberDAO {
 	public UserVO goLogin(UserVO userVO);
 
 	public int updateMbrInfo(UserVO uptUserVO);
+	
+	public int insertMbrInfo(UserVO intUserVO);
 
 }

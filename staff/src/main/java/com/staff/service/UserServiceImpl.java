@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService{
 	public int updateMbrInfo(UserVO uptUserVO) {
 		return memberDAO.updateMbrInfo(uptUserVO);
 	}
-	
+	@Override
+	public int insertMbrInfo(UserVO intUserVO) {
+		return memberDAO.insertMbrInfo(intUserVO);
+	}
 	
 }
