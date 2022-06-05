@@ -1,8 +1,7 @@
 package com.staff.controller.PageController;
 
-
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +32,8 @@ public class UserController {
 	@PostMapping("/gologin.staff")
 	public RedirectView goLogin(UserVO userVO, HttpServletRequest req, RedirectAttributes rttr,
 			HttpServletResponse res) {
+		res.setContentType("application/json;charset=UTF-8");  
+		res.setCharacterEncoding("UTF-8");  
 		try {
 			HttpSession session = req.getSession();
 
@@ -41,21 +42,22 @@ public class UserController {
 			if (loginUser == null) {
 				rttr.addFlashAttribute("msg", false);
 
-			} else {
+			} else {	
+				URLEncoder.encode(String.valueOf(loginUser.getMbr_no()), "utf-8");
 
-				Cookie mbr_no = new Cookie("mbr_no", String.valueOf(loginUser.getMbr_no()));
-				Cookie mbr_nm = new Cookie("mbr_nm", String.valueOf(loginUser.getMbr_nm()));
-				Cookie mbr_email = new Cookie("mbr_email", String.valueOf(loginUser.getMbr_email()));
-				Cookie mbr_pw = new Cookie("mbr_pw", String.valueOf(loginUser.getMbr_pw()));
-				Cookie mbr_phone = new Cookie("mbr_phone", String.valueOf(loginUser.getMbr_phone()));
-				Cookie mbr_cont = new Cookie("mbr_cont", String.valueOf(loginUser.getMbr_cont()));
-				Cookie mbr_addr = new Cookie("mbr_addr", String.valueOf(loginUser.getMbr_addr()));
-				Cookie mbr_web = new Cookie("mbr_web", String.valueOf(loginUser.getMbr_web()));
-				Cookie mbr_twit = new Cookie("mbr_twit", String.valueOf(loginUser.getMbr_twit()));
-				Cookie mbr_insta = new Cookie("mbr_insta", String.valueOf(loginUser.getMbr_insta()));
-				Cookie mbr_face = new Cookie("mbr_face", String.valueOf(loginUser.getMbr_face()));
-				Cookie mbr_brd = new Cookie("mbr_brd", String.valueOf(loginUser.getMbr_brd()));
-				Cookie sys_reg_date = new Cookie("sys_reg_date", String.valueOf(loginUser.getSys_reg_date()));
+				Cookie mbr_no = new Cookie("mbr_no", URLEncoder.encode(String.valueOf(loginUser.getMbr_no()), "UTF-8"));
+				Cookie mbr_nm = new Cookie("mbr_nm", URLEncoder.encode(String.valueOf(loginUser.getMbr_nm()), "UTF-8"));
+				Cookie mbr_email = new Cookie("mbr_email", URLEncoder.encode(String.valueOf(loginUser.getMbr_email()), "UTF-8"));
+				Cookie mbr_pw = new Cookie("mbr_pw", URLEncoder.encode(String.valueOf(loginUser.getMbr_pw()), "UTF-8"));
+				Cookie mbr_phone = new Cookie("mbr_phone", URLEncoder.encode(String.valueOf(loginUser.getMbr_phone()), "UTF-8"));
+				Cookie mbr_cont = new Cookie("mbr_cont", URLEncoder.encode(String.valueOf(loginUser.getMbr_cont()), "UTF-8"));
+				Cookie mbr_addr = new Cookie("mbr_addr", URLEncoder.encode(String.valueOf(loginUser.getMbr_addr()), "UTF-8"));
+				Cookie mbr_web = new Cookie("mbr_web", URLEncoder.encode(String.valueOf(loginUser.getMbr_web()), "UTF-8"));
+				Cookie mbr_twit = new Cookie("mbr_twit", URLEncoder.encode(String.valueOf(loginUser.getMbr_twit()), "UTF-8"));
+				Cookie mbr_insta = new Cookie("mbr_insta", URLEncoder.encode(String.valueOf(loginUser.getMbr_insta()), "UTF-8"));
+				Cookie mbr_face = new Cookie("mbr_face", URLEncoder.encode(String.valueOf(loginUser.getMbr_face()), "UTF-8"));
+				Cookie mbr_brd = new Cookie("mbr_brd", URLEncoder.encode(String.valueOf(loginUser.getMbr_brd()), "UTF-8"));
+				Cookie sys_reg_date = new Cookie("sys_reg_date", URLEncoder.encode(String.valueOf(loginUser.getSys_reg_date()), "UTF-8"));
 
 				res.addCookie(mbr_no);
 				res.addCookie(mbr_nm);
