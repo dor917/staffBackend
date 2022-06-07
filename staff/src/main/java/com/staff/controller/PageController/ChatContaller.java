@@ -44,22 +44,23 @@ public class ChatContaller {
 	final static String ID = "staff";
 	final static String IP = "3.36.120.248";
 	final static int SSHPORT = 22;
+	final static int CHATPORT = 1213;
 	final static String PW = "staff123";
 	Socket socket = null;
 
 	@RequestMapping("/sendChat.staff")
 	public String chatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		try {
-			String ip = "3.36.120.248";
-			int port = 1213;
 			String prj_no = req.getParameter("prj_no");
 			String mbr_email = req.getParameter("mbr_email");
 			String message = req.getParameter("message");
-
+			if (null == message && "".equals(message)) {
+				message = "";
+			}
 			String sendMessage = prj_no + "!@##@!" + mbr_email + "!@##@!" + message;
 
 			System.out.println(sendMessage);
-			connChatServer(ip, port, sendMessage);
+			connChatServer(IP, CHATPORT, sendMessage);
 			return "success";
 		} catch (Exception e) {
 			return "fali";
