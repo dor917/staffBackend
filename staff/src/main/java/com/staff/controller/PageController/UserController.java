@@ -2,6 +2,7 @@ package com.staff.controller.PageController;
 
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.staff.model.ProjectVO;
 import com.staff.model.UserVO;
 import com.staff.service.UserService;
 import com.staff.service.UserServiceImpl;
@@ -81,14 +84,15 @@ public class UserController {
 
 	}
 
+	@CrossOrigin
 	@RequestMapping("/updateMbrInfo.staff")
-	public void updateMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+	public RedirectView updateMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		// 1, 파라미터 받아오기
 		String mbr_no = req.getParameter("mbr_no");
 		String mbr_nm = req.getParameter("mbr_nm");
 		String mbr_email = req.getParameter("mbr_email");
 		String mbr_pw = req.getParameter("mbr_pw");
-		String mbr_brd = req.getParameter("mbr_brd");
+//		String mbr_brd = req.getParameter("mbr_brd");
 		String mbr_phone = req.getParameter("mbr_phone");
 		String mbr_cont = req.getParameter("mbr_cont");
 		String mbr_addr = req.getParameter("mbr_addr");
@@ -104,7 +108,7 @@ public class UserController {
 		uptUserVO.setMbr_nm(mbr_nm);
 		uptUserVO.setMbr_email(mbr_email);
 		uptUserVO.setMbr_pw(mbr_pw);
-		uptUserVO.setMbr_brd(formatter.parse(mbr_brd));
+//		uptUserVO.setMbr_brd(formatter.parse(mbr_brd));
 		uptUserVO.setMbr_phone(mbr_phone);
 		uptUserVO.setMbr_cont(mbr_cont);
 		uptUserVO.setMbr_addr(mbr_addr);
@@ -114,40 +118,52 @@ public class UserController {
 		uptUserVO.setMbr_insta(mbr_insta);
 		System.out.println(uptUserVO.toString());
 
-		userService.updateMbrInfo(uptUserVO);
+		int reuslt = userService.updateMbrInfo(uptUserVO);
+		System.out.println(reuslt);
+		if (reuslt > 0) {
+			System.out.println("ASddasdasdas");
+			return goLogin(uptUserVO, req, rttr, res);
+		} else {
+			return new RedirectView("http://localhost:3000/Main");
+		}
 	}
 	
 	@RequestMapping("/insertMbrInfo.staff")
-	public void insertMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
-		String mbr_no = req.getParameter("mbr_no");
+	public RedirectView insertMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+//		String mbr_no = req.getParameter("mbr_no");
 		String mbr_nm = req.getParameter("mbr_nm");
 		String mbr_email = req.getParameter("mbr_email");
 		String mbr_pw = req.getParameter("mbr_pw");
-		String mbr_brd = req.getParameter("mbr_brd");
-		String mbr_phone = req.getParameter("mbr_phone");
-		String mbr_cont = req.getParameter("mbr_cont");
-		String mbr_addr = req.getParameter("mbr_addr");
-		String mbr_web = req.getParameter("mbr_web");
-		String mbr_twit = req.getParameter("mbr_twit");
-		String mbr_face = req.getParameter("mbr_face");
-		String mbr_insta = req.getParameter("mbr_insta");
+//		String mbr_brd = req.getParameter("mbr_brd");
+//		String mbr_phone = req.getParameter("mbr_phone");
+//		String mbr_cont = req.getParameter("mbr_cont");
+//		String mbr_addr = req.getParameter("mbr_addr");
+//		String mbr_web = req.getParameter("mbr_web");
+//		String mbr_twit = req.getParameter("mbr_twit");
+//		String mbr_face = req.getParameter("mbr_face");
+//		String mbr_insta = req.getParameter(" mbr_insta");
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(mbr_nm);
+		System.out.println(mbr_email);
+		System.out.println(mbr_pw);
+		
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		UserVO intUserVO = new UserVO();
-		intUserVO.setMbr_no(Integer.valueOf(mbr_no));
+//		intUserVO.setMbr_no(Integer.valueOf(mbr_no));
 		intUserVO.setMbr_nm(mbr_nm);
 		intUserVO.setMbr_email(mbr_email);
 		intUserVO.setMbr_pw(mbr_pw);
-		intUserVO.setMbr_brd(formatter.parse(mbr_brd));
-		intUserVO.setMbr_phone(mbr_phone);
-		intUserVO.setMbr_cont(mbr_cont);
-		intUserVO.setMbr_addr(mbr_addr);
-		intUserVO.setMbr_web(mbr_web);
-		intUserVO.setMbr_twit(mbr_twit);
-		intUserVO.setMbr_face(mbr_face);
-		intUserVO.setMbr_insta(mbr_insta);
+//		intUserVO.setMbr_brd(formatter.parse(mbr_brd));
+//		intUserVO.setMbr_phone(mbr_phone);
+//		intUserVO.setMbr_cont(mbr_cont);
+//		intUserVO.setMbr_addr(mbr_addr);
+//		intUserVO.setMbr_web(mbr_web);
+//		intUserVO.setMbr_twit(mbr_twit);
+//		intUserVO.setMbr_face(mbr_face);
+//		intUserVO.setMbr_insta(mbr_insta);
 		
 		userService.insertMbrInfo(intUserVO);
+		return new RedirectView("http://localhost:3000/Login");
 	}
 }

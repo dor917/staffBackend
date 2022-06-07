@@ -2,4 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.CalendarDAO">
 
+<select id="getPrjCalendarList" parameterType="String" resultType="com.staff.model.CalendarVO">
+		SELECT
+				prj_no,
+				prj_prog,
+				prj_nm,
+				prj_expl,
+				prj_start_date,
+				prj_end_date,
+				sys_reg_date
+		FROM
+			PRJ_BASE
+		WHERE
+			PRJ_NO IN
+		       (
+			SELECT
+				PRJ_NO
+			FROM
+				PRJ_MBR_BASE
+			WHERE
+				MBR_NO = #{mbr_no})
+	</select>
+	
+	<insert id="insertCalendarInfo" parameterType="com.staff.model.CalendarVO">
+		UPDATE PRJ_CALE_BASE
+			SET
+				issue_type = #{issue_type}, 
+				issue_tit = #{issue_tit}, 
+				issue_cont = #{issue_cont}, 
+				mbr_no = #{mbr_no}, 
+				issue_start_date = #{issue_start_date}, 
+				issue_end_date = #{issue_end_date} 	
+			WHERE prj_no = #{prj_no}
+	</insert>		
+	
+	<update id="updateCalendarInfo" parameterType="com.staff.model.CalendarVO">
+	</update>
+	
+	<delete id="deleteCalendarInfo" parameterType="com.staff.model.CalendarVO">
+	</delete>
+ 
 </mapper>

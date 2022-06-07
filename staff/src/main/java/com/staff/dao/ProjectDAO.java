@@ -14,7 +14,13 @@ public interface ProjectDAO {
 
 	public int updateProjectInfo(ProjectVO uptProjectVO);
 
-	public int insertProjectInfo(PrjMbrVO intProjectVO);
+	public int insertProjectInfo(ProjectVO intProjectVO);
 	
 	public int deleteProjectInfo(PrjMbrVO detProjectVO);
+
+	public int insertProjectMbrInfo(PrjMbrVO intProjectMbrVO);
+
+	public int deleteProjectMbrInfo(PrjMbrVO detProjectMbrVO);
+	
+	public int selectSeq();
 }

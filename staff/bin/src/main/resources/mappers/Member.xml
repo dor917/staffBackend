@@ -55,6 +55,16 @@
 	       	mbr_brd = #{mbr_brd}
 	    WHERE mbr_no = #{mbr_no}
     </update>
-	   	
     
+    <insert id="insertMbrInfo" parameterType="com.staff.model.UserVO">
+     INSERT INTO MBR_BASE(mbr_no, mbr_nm, mbr_email, mbr_pw, 
+     					  mbr_phone, mbr_cont, mbr_addr, mbr_web,
+     					  mbr_twit,	mbr_insta, mbr_face, mbr_brd, SYS_REG_DATE)
+     					  
+     VALUES (#{mbr_no}, #{mbr_nm}, #{mbr_email}, #{mbr_pw},
+     		 #{mbr_phone}, #{mbr_cont}, #{mbr_addr}, #{mbr_web},
+     		 #{mbr_twit}, #{mbr_insta}, #{mbr_face}, #{mbr_brd},
+	       	 SYSDATE)
+    </insert>
+
 </mapper>

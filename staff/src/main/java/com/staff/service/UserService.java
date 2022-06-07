@@ -1,12 +1,15 @@
 package com.staff.service;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Service;
 
+import com.staff.model.ProjectVO;
 import com.staff.model.UserVO;
 
 
@@ -15,4 +18,5 @@ public interface UserService {
 	public void logout(HttpSession session);
 	public int updateMbrInfo(UserVO uptUserVO);
 	public int insertMbrInfo(UserVO intUserVO);
+
 }

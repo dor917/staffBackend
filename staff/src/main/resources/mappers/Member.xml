@@ -44,19 +44,25 @@
 	    SET
 	       	mbr_nm = #{mbr_nm}, 
 	       	mbr_email = #{mbr_email}, 
-	       	mbr_pw = #{mbr_pw}, 
+	<!--	mbr_pw = #{mbr_pw},   -->       
 	       	mbr_phone = #{mbr_phone}, 
 	       	mbr_cont = #{mbr_cont}, 
 	       	mbr_addr = #{mbr_addr}, 
 	       	mbr_web = #{mbr_web}, 
 	       	mbr_twit = #{mbr_twit}, 
 	       	mbr_insta = #{mbr_insta}, 
-	       	mbr_face = #{mbr_face}, 
-	       	mbr_brd = #{mbr_brd}
+	       	mbr_face = #{mbr_face}
+	 <!--      	mbr_brd = #{mbr_brd} -->
 	    WHERE mbr_no = #{mbr_no}
     </update>
     
     <insert id="insertMbrInfo" parameterType="com.staff.model.UserVO">
+     INSERT INTO MBR_BASE(mbr_no, mbr_nm, mbr_pw, mbr_email, SYS_REG_DATE)
+     					  
+     VALUES (MBR_SEQ.nextval, #{mbr_email}, #{mbr_nm}, SYSDATE)
+	 </insert>
+    
+<!-- <insert id="insertMbrInfo" parameterType="com.staff.model.UserVO">
      INSERT INTO MBR_BASE(mbr_no, mbr_nm, mbr_email, mbr_pw, 
      					  mbr_phone, mbr_cont, mbr_addr, mbr_web,
      					  mbr_twit,	mbr_insta, mbr_face, mbr_brd, SYS_REG_DATE)
@@ -65,6 +71,6 @@
      		 #{mbr_phone}, #{mbr_cont}, #{mbr_addr}, #{mbr_web},
      		 #{mbr_twit}, #{mbr_insta}, #{mbr_face}, #{mbr_brd},
 	       	 SYSDATE)
-    </insert>
+    </insert> -->
 
 </mapper>

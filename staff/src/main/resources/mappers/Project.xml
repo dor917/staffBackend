@@ -4,52 +4,71 @@
 
 	<select id="getMbrProjectList" parameterType="String" resultType="com.staff.model.ProjectVO">
 		SELECT
-				prj_no,
-				prj_prog,
-				prj_nm,
-				prj_expl,
-				prj_start_date,
-				prj_end_date,
-				sys_reg_date
+		prj_no,
+		prj_prog,
+		prj_nm,
+		prj_expl,
+		prj_start_date,
+		prj_end_date,
+		sys_reg_date
 		FROM
-			PRJ_BASE
+		PRJ_BASE
 		WHERE
-			PRJ_NO IN
-		       (
-			SELECT
-				PRJ_NO
-			FROM
-				PRJ_MBR_BASE
-			WHERE
-				MBR_NO = #{mbr_no})
-		
+		PRJ_NO IN
+		(
+		SELECT
+		PRJ_NO
+		FROM
+		PRJ_MBR_BASE
+		WHERE
+		MBR_NO = #{mbr_no}
+		)
+
 	</select>
 	
-	    <update id="updateProjectInfo" parameterType="com.staff.model.ProjectVO">
-     UPDATE PRJ_BASE
-	    SET
-	       	prj_no = #{prj_no}, 
-	       	prj_prog = #{prj_prog}, 
-	       	prj_nm = #{prj_nm}, 
-	       	prj_expl = #{prj_expl}, 
-	       	prj_start_date = #{prj_start_date}, 
-	       	prj_end_date = #{prj_end_date}
-	       	
-	    WHERE prj_no = #{prj_no}
-    </update>
-    
-    <insert id="insertProjectInfo" parameterType="com.staff.model.PrjMbrVO">
-     INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)
-     VALUES (#{mbr_no},
-     		 #{prj_no},
-	       	 #{mbr_posi},
-	       	 SYSDATE)
-    </insert>
-    
-    <delete id="deleteProjectInfo" parameterType="com.staff.model.PrjMbrVO">
-     DELETE FROM PRJ_MBR_BASE
+	<select id="selectSeq" resultType="int">
+		SELECT PRJ_SEQ.nextval
+		FROM DUAL
+	</select>
 
-	    WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
-    </delete>
+	<update id="updateProjectInfo"
+		parameterType="com.staff.model.ProjectVO">
+		UPDATE PRJ_BASE
+		SET
+		prj_no = #{prj_no},
+		prj_prog = #{prj_prog},
+		prj_nm = #{prj_nm},
+		prj_expl = #{prj_expl},
+		prj_start_date = #{prj_start_date},
+		prj_end_date = #{prj_end_date}
+
+		WHERE prj_no = #{prj_no}
+	</update>
+
+	<insert id="insertProjectInfo"
+		parameterType="com.staff.model.ProjectVO">
+		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl,
+		prj_prog, prj_start_date, prj_end_date,
+		SYS_REG_DATE)
+		VALUES
+		(#{prj_no}, #{prj_nm},
+		#{prj_expl}, #{prj_prog}, #{prj_start_date},
+		#{prj_end_date}, SYSDATE)
+
+	</insert>
+
+	<insert id="insertProjectMbrInfo"
+		parameterType="com.staff.model.PrjMbrVO">
+		INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)
+		VALUES (#{mbr_no}, #{prj_no},
+		#{mbr_posi}, SYSDATE)
+	</insert>
+
+	<delete id="deleteProjectMbrInfo"
+		parameterType="com.staff.model.PrjMbrVO">
+		DELETE FROM PRJ_MBR_BASE
+
+		WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
+	</delete>
 
 </mapper>

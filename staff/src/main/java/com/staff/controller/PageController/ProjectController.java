@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
@@ -26,7 +27,6 @@ public class ProjectController {
 	@CrossOrigin
 	@RequestMapping("/getMbrProjectList.staff")
 	public ArrayList<ProjectVO> getMbrProjectList (HttpServletRequest req, HttpServletResponse res){
-
 		ArrayList<ProjectVO> resultArr = new ArrayList<ProjectVO>();
 		try {
 			String mbr_no = req.getParameter("mbr_no");
@@ -36,7 +36,6 @@ public class ProjectController {
 			e.printStackTrace();
 		}
 		return resultArr;
-	
 	}
 	
 	@RequestMapping("/updateProjectInfo.staff")
@@ -48,10 +47,9 @@ public class ProjectController {
 		String prj_prog = req.getParameter("prj_prog");
 		String prj_start_date = req.getParameter("prj_start_date");
 		String prj_end_date = req.getParameter("prj_end_date");
-		
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
+		
 		ProjectVO uptProjectVO = new ProjectVO();
 		uptProjectVO.setPrj_no(Integer.valueOf(prj_no));
 		uptProjectVO.setPrj_nm(prj_nm);
@@ -65,29 +63,81 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/insertProjectInfo.staff")
-	public void insertProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+	public RedirectView insertProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		// 1, 파라미터 받아오기
+		int prj_no = projectService.selectseq();
+		String mbr_no = req.getParameter("mbr_no");
+		String prj_nm = req.getParameter("prj_nm");
+		String prj_expl = req.getParameter("prj_expl");
+		String prj_prog = req.getParameter("prj_prog");
+		String prj_start_date = req.getParameter("prj_start_date");
+		String prj_end_date = req.getParameter("prj_end_date");
+//체크박스 값들
+		
+		//System.out.println(prj_no);
+		System.out.println(prj_nm);
+		System.out.println(prj_expl);
+		System.out.println(prj_prog);
+		System.out.println(prj_start_date);
+		System.out.println(prj_end_date);
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	
+		ProjectVO intProjectVO = new ProjectVO();
+		intProjectVO.setPrj_no(prj_no);
+		intProjectVO.setPrj_nm(prj_nm);
+		intProjectVO.setPrj_expl(prj_expl);
+		intProjectVO.setPrj_prog(Integer.valueOf(prj_prog));
+		intProjectVO.setPrj_start_date(formatter.parse(prj_start_date));
+		intProjectVO.setPrj_end_date(formatter.parse(prj_end_date));
+		int result = projectService.insertProjectInfo(intProjectVO);
+		if (result > 0) {
+			PrjMbrVO intProjectMbrVO = new PrjMbrVO();
+			int mbr_posi = 1;
+			intProjectMbrVO.setMbr_no(Integer.valueOf(mbr_no));
+			intProjectMbrVO.setPrj_no(prj_no);
+			intProjectMbrVO.setMbr_posi(mbr_posi);
+			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
+
+		}
+		return new RedirectView("http://localhost:3000/Main"); 
+		
+	}
+		
+		
+	
+	
+	@RequestMapping("/insertProjectMbrInfo.staff")
+	public RedirectView insertProjectMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String mbr_no = req.getParameter("mbr_no");
 		String prj_no = req.getParameter("prj_no");
 		String mbr_posi = req.getParameter("mbr_posi");
 		
-		PrjMbrVO intProjectVO = new PrjMbrVO();
-		intProjectVO.setMbr_no(Integer.valueOf(mbr_no));
-		intProjectVO.setPrj_no(Integer.valueOf(prj_no));
-		intProjectVO.setMbr_posi(Integer.valueOf(mbr_posi));
 		
-		projectService.insertProjectInfo(intProjectVO);
+		System.out.println(mbr_no);
+		System.out.println(prj_no);
+		System.out.println(mbr_posi);
+		
+		PrjMbrVO intProjectMbrVO = new PrjMbrVO();
+		intProjectMbrVO.setMbr_no(Integer.valueOf(mbr_no));
+		intProjectMbrVO.setPrj_no(Integer.valueOf(prj_no));
+		intProjectMbrVO.setMbr_posi(Integer.valueOf(mbr_posi));
+		
+		projectService.insertProjectMbrInfo(intProjectMbrVO);
+		return new RedirectView("http://localhost:3000/Main");
 		
 	}
 	
-	@RequestMapping("/deleteProjectInfo.staff")
+	@RequestMapping("/deleteProjectMbrInfo.staff")
 	public void deleteProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String mbr_no = req.getParameter("mbr_no");
 		String prj_no = req.getParameter("prj_no");
 		
-		PrjMbrVO detProjectVO = new PrjMbrVO();
-		detProjectVO.setMbr_no(Integer.valueOf(mbr_no));
-		detProjectVO.setPrj_no(Integer.valueOf(prj_no));
+		PrjMbrVO detProjectMbrVO = new PrjMbrVO();
+		detProjectMbrVO.setMbr_no(Integer.valueOf(mbr_no));
+		detProjectMbrVO.setPrj_no(Integer.valueOf(prj_no));
 		
-		projectService.deleteProjectInfo(detProjectVO);
+		projectService.deleteProjectMbrInfo(detProjectMbrVO);
+		
 	}
 }	

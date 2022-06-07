@@ -37,5 +37,19 @@
 	       	
 	    WHERE prj_no = #{prj_no}
     </update>
+    
+    <insert id="insertProjectInfo" parameterType="com.staff.model.PrjMbrVO">
+     INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)
+     VALUES (#{mbr_no},
+     		 #{prj_no},
+	       	 #{mbr_posi},
+	       	 SYSDATE)
+    </insert>
+    
+    <delete id="deleteProjectInfo" parameterType="com.staff.model.PrjMbrVO">
+     DELETE FROM PRJ_MBR_BASE
+
+	    WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
+    </delete>
 
 </mapper>
