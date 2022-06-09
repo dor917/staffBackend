@@ -42,7 +42,7 @@ import com.staff.util.WritingThread;
 @RestController
 public class ChatContaller {
 	final static String ID = "staff";
-	final static String IP = "13.209.9.195";
+	final static String IP = "54.180.134.66";
 	final static int SSHPORT = 22;
 	final static int CHATPORT = 1213;
 	final static String PW = "staff123";
