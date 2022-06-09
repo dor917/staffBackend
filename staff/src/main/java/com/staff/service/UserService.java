@@ -19,5 +19,6 @@ public interface UserService {
 	public int updateMbrInfo(UserVO uptUserVO);
 	public int insertMbrInfo(UserVO intUserVO);
 	public int selectseq();
+	public ArrayList<UserVO> selectMbrNm(String mbr_nm);
 
 }

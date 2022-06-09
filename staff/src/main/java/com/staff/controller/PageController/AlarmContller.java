@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,6 +22,7 @@ public class AlarmContller {
 	@Autowired(required=true)
 	AlarmServiceImpl alarmService;
 
+	@CrossOrigin
 	@RequestMapping("/getPrjAlarmList.staff")
 	public ArrayList<AlarmVO> getPrjAlarmList (HttpServletRequest req, HttpServletResponse res){
 

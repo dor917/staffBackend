@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.staff.model.Language;
 import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
+import com.staff.service.LanguageService;
+import com.staff.service.LanguageServiceImpl;
 import com.staff.service.ProjectServiceImpl;
 
 @RestController
@@ -23,6 +26,9 @@ import com.staff.service.ProjectServiceImpl;
 public class ProjectController {
 	@Autowired(required=true)
 	ProjectServiceImpl projectService;
+	
+	@Autowired(required=true)
+	LanguageServiceImpl languageService;
 
 	@CrossOrigin
 	@RequestMapping("/getMbrProjectList.staff")
@@ -31,7 +37,9 @@ public class ProjectController {
 		try {
 			String mbr_no = req.getParameter("mbr_no");
 			resultArr = projectService.getMbrProjectList(mbr_no);
-		
+			for (ProjectVO projectVO : resultArr) {
+				projectVO.setLanguages(languageService.selectPrjLang(projectVO.getPrj_no()));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,7 +55,8 @@ public class ProjectController {
 		String prj_prog = req.getParameter("prj_prog");
 		String prj_start_date = req.getParameter("prj_start_date");
 		String prj_end_date = req.getParameter("prj_end_date");
-
+		String prj_lang = req.getParameter("prj_lang");
+		String[] prj_langs = prj_lang.split(",");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		ProjectVO uptProjectVO = new ProjectVO();
@@ -73,16 +82,9 @@ public class ProjectController {
 		String prj_lan_nm = req.getParameter("prj_lan_nm");
 		String prj_start_date = req.getParameter("prj_start_date");
 		String prj_end_date = req.getParameter("prj_end_date");
+		String prj_lang = req.getParameter("prj_lang");
+		String[] prj_langs = prj_lang.split(",");
 		
-//체크박스 값들
-		
-		System.out.println(prj_no);
-		System.out.println(prj_nm);
-		System.out.println(prj_expl);
-		System.out.println(prj_prog);
-		System.out.println(prj_lan_nm);
-		System.out.println(prj_start_date);
-		System.out.println(prj_end_date);
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
@@ -103,7 +105,12 @@ public class ProjectController {
 			intProjectMbrVO.setPrj_no(prj_no);
 			intProjectMbrVO.setMbr_posi(mbr_posi);
 			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
-
+			for (int i = 0; i < prj_langs.length; i++) {
+				Language language = new Language();
+				language.setPrj_no(prj_no);
+				language.setLan_no(Integer.valueOf(prj_langs[i]));
+				languageService.insertLang(language);
+			}
 		} // 돈하한테 피드백
 		return new RedirectView("http://localhost:3000/Main"); 
 		

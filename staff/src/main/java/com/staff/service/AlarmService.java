@@ -9,6 +9,7 @@ import com.staff.model.AlarmVO;
 import com.staff.model.PrjMbrVO;
 
 
+@Service
 public interface AlarmService {
 
 	public ArrayList<AlarmVO> getPrjAlarmList(String prj_no);

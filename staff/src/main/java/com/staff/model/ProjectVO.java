@@ -1,5 +1,7 @@
 package com.staff.model;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Data;
@@ -25,5 +27,6 @@ public class ProjectVO {
 //	PRJ_CHAT_BASE
 	private String chat_url;
 	private Date chat_sys_reg_date;
-
+	
+	private ArrayList<Language> languages;
 }

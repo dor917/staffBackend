@@ -19,4 +19,5 @@ public interface MemberDAO {
 
 	public int selectSeq();
 
+	public ArrayList<UserVO> selectMbrNm(String mbr_nm);
 }

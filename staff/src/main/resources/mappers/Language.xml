@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.staff.dao.CalendarDAO">
-<insert id="insertMbrInfo"
-		parameterType="com.staff.model.UserVO">
-		INSERT INTO MBR_BASE(mbr_no, mbr_nm, mbr_email, mbr_pw,
-		mbr_brd, mbr_phone,
-		SYS_REG_DATE)
+<mapper namespace="com.staff.dao.LanguageDAO">
+<insert id="insertLang"
+		parameterType="com.staff.model.Language">
+		INSERT INTO PRJ_LANG_BASE(prj_no, lan_no, SYS_REG_DATE)
 
-		VALUES (#{mbr_no}, #{mbr_nm},
-		#{mbr_email}, #{mbr_pw}, #{mbr_brd},
-		#{mbr_phone}, SYSDATE)
+		VALUES (#{prj_no}, #{lan_no}, SYSDATE)
 	</insert>
+	
+	<select id="selectPrjLang"
+		parameterType="int" resultType="Language">
+		SELECT PLB.prj_no, PLB.lan_no, PL.lan_nm, PLB.SYS_REG_DATE
+		FROM PRJ_LANG_BASE PLB, PRJ_LANGUAGE PL
+		WHERE PLB.lan_no = PL.lan_no
+		AND prj_no = #{prj_no}
+	</select>
 
 </mapper>

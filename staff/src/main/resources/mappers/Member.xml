@@ -78,5 +78,26 @@
 		#{mbr_email}, #{mbr_pw}, #{mbr_brd},
 		#{mbr_phone}, SYSDATE)
 	</insert>
+	<select id="selectMbrNm"
+		parameterType="String" resultType = "com.staff.model.UserVO">
+			SELECT
+		mbr_no,
+		mbr_nm,
+		mbr_email,
+		mbr_pw,
+		mbr_phone,
+		mbr_cont,
+		mbr_addr,
+		mbr_web,
+		mbr_twit,
+		mbr_insta,
+		mbr_face,
+		mbr_brd,
+		sys_reg_date
+		FROM
+		dba_staff.MBR_BASE
+		WHERE mbr_nm LIKE #{mbr_nm}
+		AND ROWNUM &lt;= 5
+	</select>
 
 </mapper>

@@ -43,4 +43,10 @@ public class UserServiceImpl implements UserService{
 	public int selectseq() {
 		return memberDAO.selectSeq();
 	}
+
+	@Override
+	public ArrayList<UserVO> selectMbrNm(String mbr_nm) {
+		// TODO Auto-generated method stub
+		return memberDAO.selectMbrNm(mbr_nm);
+	}
 }
