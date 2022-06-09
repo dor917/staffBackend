@@ -47,15 +47,27 @@
 
 	<insert id="insertProjectInfo"
 		parameterType="com.staff.model.ProjectVO">
-		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl,
+		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl, 
 		prj_prog, prj_start_date, prj_end_date,
 		SYS_REG_DATE)
 		VALUES
-		(#{prj_no}, #{prj_nm},
+		(#{prj_no}, #{prj_nm}, 
 		#{prj_expl}, #{prj_prog}, #{prj_start_date},
 		#{prj_end_date}, SYSDATE)
 
 	</insert>
+	
+<!-- 	<insert id="insertProjectInfo"
+		parameterType="com.staff.model.ProjectVO">
+		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl,
+		prj_prog, prj_lan_nm, prj_start_date, prj_end_date,
+		SYS_REG_DATE)
+		VALUES
+		(#{prj_no}, #{prj_nm},
+		#{prj_expl}, #{prj_prog}, {prj_lan_nm}, #{prj_start_date},
+		#{prj_end_date}, SYSDATE)
+
+	</insert> -->
 
 	<insert id="insertProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">

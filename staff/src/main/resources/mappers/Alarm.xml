@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.AlarmDAO">
-	<select id="getAlramInfo" parameterType="String" resultType="com.staff.model.AlarmVO">
-		SELECT ALARM_NO, PRJ_NO, ALARM_CONT, SYS_REG_DATE
+	<select id="getPrjAlarmList" parameterType="String" resultType="com.staff.model.AlarmVO">
+		SELECT alarm_no, prj_no, alarm_cont, sys_reg_date
 		FROM PRJ_ALARM_BASE
 		WHERE PRJ_NO = #{prj_no}
 	</select>
 
-<insert id="insertAlarminfo"  parameterType="com.staff.model.AlarmVO">
+<insert id="insertAlarmInfo"  parameterType="com.staff.model.AlarmVO">
 INSERT INTO PRJ_ALARM_BASE(alarm_no, prj_no, alarm_cont, SYS_REG_DATE)
      					  
      VALUES (#{alarm_no},

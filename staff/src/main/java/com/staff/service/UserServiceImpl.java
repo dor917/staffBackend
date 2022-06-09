@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService{
 	public int insertMbrInfo(UserVO intUserVO) {
 		return memberDAO.insertMbrInfo(intUserVO);
 	}
+
+	@Override
+	public int selectseq() {
+		return memberDAO.selectSeq();
+	}
 }

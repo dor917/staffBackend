@@ -70,14 +70,17 @@ public class ProjectController {
 		String prj_nm = req.getParameter("prj_nm");
 		String prj_expl = req.getParameter("prj_expl");
 		String prj_prog = req.getParameter("prj_prog");
+		String prj_lan_nm = req.getParameter("prj_lan_nm");
 		String prj_start_date = req.getParameter("prj_start_date");
 		String prj_end_date = req.getParameter("prj_end_date");
+		
 //체크박스 값들
 		
-		//System.out.println(prj_no);
+		System.out.println(prj_no);
 		System.out.println(prj_nm);
 		System.out.println(prj_expl);
 		System.out.println(prj_prog);
+		System.out.println(prj_lan_nm);
 		System.out.println(prj_start_date);
 		System.out.println(prj_end_date);
 		
@@ -88,8 +91,10 @@ public class ProjectController {
 		intProjectVO.setPrj_nm(prj_nm);
 		intProjectVO.setPrj_expl(prj_expl);
 		intProjectVO.setPrj_prog(Integer.valueOf(prj_prog));
+		intProjectVO.setPrj_lan_nm(prj_lan_nm);
 		intProjectVO.setPrj_start_date(formatter.parse(prj_start_date));
 		intProjectVO.setPrj_end_date(formatter.parse(prj_end_date));
+		
 		int result = projectService.insertProjectInfo(intProjectVO);
 		if (result > 0) {
 			PrjMbrVO intProjectMbrVO = new PrjMbrVO();
@@ -99,13 +104,10 @@ public class ProjectController {
 			intProjectMbrVO.setMbr_posi(mbr_posi);
 			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
 
-		}
+		} // 돈하한테 피드백
 		return new RedirectView("http://localhost:3000/Main"); 
 		
 	}
-		
-		
-	
 	
 	@RequestMapping("/insertProjectMbrInfo.staff")
 	public RedirectView insertProjectMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {

@@ -16,7 +16,7 @@ public class AlarmServiceImpl implements AlarmService{
 	
 	@Override
 	public ArrayList<AlarmVO> getPrjAlarmList(String prj_no) {
-		return AlarmDAO.getAlramInfo(prj_no);
+		return AlarmDAO.getPrjAlarmList(prj_no);
 	}
 	@Override
 	public int insertAlarminfo(AlarmVO intAlarmVO) {

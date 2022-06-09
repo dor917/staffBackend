@@ -17,4 +17,6 @@ public interface MemberDAO {
 
 	public ArrayList<UserVO> getMbrUserList(String mbr_no);
 
+	public int selectSeq();
+
 }

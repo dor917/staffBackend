@@ -18,5 +18,6 @@ public interface UserService {
 	public void logout(HttpSession session);
 	public int updateMbrInfo(UserVO uptUserVO);
 	public int insertMbrInfo(UserVO intUserVO);
+	public int selectseq();
 
 }
