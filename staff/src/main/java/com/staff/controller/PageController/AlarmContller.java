@@ -38,7 +38,7 @@ public class AlarmContller {
 	
 	}
  
-	@RequestMapping("/insertAlarminfo.staff")
+	@RequestMapping("/insertAlarmInfo.staff")
 	public void insetAlarminfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception{
 		String alarm_no = req.getParameter("alarm_no");
 		String prj_no =  req.getParameter("prj_no");
@@ -49,7 +49,7 @@ public class AlarmContller {
 		intAlarmVO.setPrj_no(Integer.valueOf(prj_no));
 		intAlarmVO.setAlarm_cont(alarm_cont);
 		
-		alarmService.insertAlarminfo(intAlarmVO);
+		alarmService.insertAlarmInfo(intAlarmVO);
 	}
 	
 	@RequestMapping("/deleteAlarmInfo.staff")
