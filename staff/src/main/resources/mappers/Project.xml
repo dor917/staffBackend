@@ -4,25 +4,25 @@
 
 	<select id="getMbrProjectList" parameterType="String" resultType="com.staff.model.ProjectVO">
 		SELECT
-		prj_no,
-		prj_prog,
-		prj_nm,
-		prj_expl,
-		prj_start_date,
-		prj_end_date,
-		sys_reg_date
+			prj_no,
+			prj_prog,
+				prj_nm,
+				prj_expl,
+				prj_start_date,
+				prj_end_date,
+				sys_reg_date
 		FROM
-		PRJ_BASE
+				PRJ_BASE
 		WHERE
-		PRJ_NO IN
-		(
-		SELECT
-		PRJ_NO
-		FROM
-		PRJ_MBR_BASE
-		WHERE
-		MBR_NO = #{mbr_no}
-		)
+				PRJ_NO IN
+				(
+					SELECT
+						PRJ_NO
+					FROM
+						PRJ_MBR_BASE
+					WHERE
+						MBR_NO = #{mbr_no}
+				)
 
 	</select>
 	
@@ -45,7 +45,7 @@
 		WHERE prj_no = #{prj_no}
 	</update>
 
-	<insert id="insertProjectInfo"
+<!-- 	<insert id="insertProjectInfo"
 		parameterType="com.staff.model.ProjectVO">
 		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl, 
 		prj_prog, prj_start_date, prj_end_date,
@@ -55,19 +55,17 @@
 		#{prj_expl}, #{prj_prog}, #{prj_start_date},
 		#{prj_end_date}, SYSDATE)
 
-	</insert>
+	</insert> -->
 	
-<!-- 	<insert id="insertProjectInfo"
+ 	<insert id="insertProjectInfo"
 		parameterType="com.staff.model.ProjectVO">
-		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl,
-		prj_prog, prj_lan_nm, prj_start_date, prj_end_date,
-		SYS_REG_DATE)
+		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl, prj_prog, prj_start_date, prj_end_date, sys_reg_date)
 		VALUES
 		(#{prj_no}, #{prj_nm},
-		#{prj_expl}, #{prj_prog}, {prj_lan_nm}, #{prj_start_date},
+		#{prj_expl}, #{prj_prog}, #{prj_start_date},
 		#{prj_end_date}, SYSDATE)
 
-	</insert> -->
+	</insert>
 
 	<insert id="insertProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">
