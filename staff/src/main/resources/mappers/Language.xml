@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.LanguageDAO">
-<insert id="insertLang"
-		parameterType="com.staff.model.Language">
-		INSERT INTO PRJ_LANG_BASE(prj_no, lan_no, SYS_REG_DATE)
 
-		VALUES (#{prj_no}, #{lan_no}, SYSDATE)
-	</insert>
-	
 	<select id="selectPrjLang"
 		parameterType="int" resultType="Language">
 		SELECT PLB.prj_no, PLB.lan_no, PL.lan_nm, PLB.SYS_REG_DATE
@@ -15,5 +9,13 @@
 		WHERE PLB.lan_no = PL.lan_no
 		AND prj_no = #{prj_no}
 	</select>
+	
+<insert id="insertLang"
+		parameterType="com.staff.model.Language">
+		INSERT INTO PRJ_LANG_BASE(prj_no, lan_no, SYS_REG_DATE)
+
+		VALUES (#{prj_no}, #{lan_no}, SYSDATE)
+	</insert>
+	
 
 </mapper>

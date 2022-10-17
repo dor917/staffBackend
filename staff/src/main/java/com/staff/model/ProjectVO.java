@@ -29,4 +29,5 @@ public class ProjectVO {
 	private Date chat_sys_reg_date;
 	
 	private ArrayList<Language> languages;
+
 }

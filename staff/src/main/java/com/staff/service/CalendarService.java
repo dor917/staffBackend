@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 import com.staff.model.CalendarVO;
-import com.staff.model.ProjectVO;
 
 @Service
 public interface CalendarService {
@@ -16,4 +15,5 @@ public interface CalendarService {
 
 	public int insertCalendarInfo(CalendarVO intCalendarVO);
 
+	public int deleteCalendarInfo(CalendarVO detCalendarVO);
 }

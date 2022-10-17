@@ -85,7 +85,6 @@ public class ProjectController {
 		String prj_lang = req.getParameter("prj_lang");
 		String[] prj_langs = prj_lang.split(",");
 		
-		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
 		ProjectVO intProjectVO = new ProjectVO();

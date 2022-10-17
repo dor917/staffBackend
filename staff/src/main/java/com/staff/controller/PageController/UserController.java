@@ -151,6 +151,6 @@ public class UserController {
 	public ArrayList<UserVO> selectMbrNm(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String mbr_nm = req.getParameter("mbr_nm");
 		
-		return userService.selectMbrNm(mbr_nm+"%");
+		return userService.selectMbrNm(mbr_nm + "%");
 	}
 }

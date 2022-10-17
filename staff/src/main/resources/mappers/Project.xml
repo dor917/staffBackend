@@ -80,6 +80,7 @@
 		parameterType="com.staff.model.PrjMbrVO">
 		DELETE FROM PRJ_MBR_BASE
 
+		<!-- help -->
 		WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
 	</delete>
 

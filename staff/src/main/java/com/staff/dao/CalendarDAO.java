@@ -16,4 +16,5 @@ public interface CalendarDAO {
 	
 	public int insertCalendarInfo(CalendarVO intCalendarVO);
 
+	public int deleteCalendarInfo(CalendarVO detCalendarVO);
 }

@@ -5,25 +5,25 @@
 	<select id="goLogin" parameterType="com.staff.model.UserVO"
 		resultType="com.staff.model.UserVO">
 		SELECT
-		mbr_no,
-		mbr_nm,
-		mbr_email,
-		mbr_pw,
-		mbr_phone,
-		mbr_cont,
-		mbr_addr,
-		mbr_web,
-		mbr_twit,
-		mbr_insta,
-		mbr_face,
-		mbr_brd,
-		sys_reg_date
+			mbr_no,
+			mbr_nm,
+			mbr_email,
+			mbr_pw,
+			mbr_phone,
+			mbr_cont,
+			mbr_addr,
+			mbr_web,
+			mbr_twit,
+			mbr_insta,
+			mbr_face,
+			mbr_brd,
+			sys_reg_date
 		FROM
-		dba_staff.MBR_BASE
-		WHERE MBR_EMAIL = #{mbr_email} AND MBR_PW =
-		#{mbr_pw}
-
+			dba_staff.MBR_BASE
+			WHERE MBR_EMAIL = #{mbr_email} AND MBR_PW =
+			#{mbr_pw}
 	</select>
+	
 	<select id="selectSeq" resultType="int">
 		SELECT MBR_SEQ.nextval
 		FROM
@@ -33,37 +33,38 @@
 	<select id="getUserInfo" parameterType="com.staff.model.UserVO"
 		resultType="com.staff.model.UserVO">
 		SELECT
-		mbr_no,
-		mbr_nm,
-		mbr_email,
-		mbr_pw,
-		mbr_phone,
-		mbr_cont,
-		mbr_addr,
-		mbr_web,
-		mbr_twit,
-		mbr_insta,
-		mbr_face,
-		mbr_brd,
-		sys_reg_date
+			mbr_no,
+			mbr_nm,
+			mbr_email,
+			mbr_pw,
+			mbr_phone,
+			mbr_cont,
+			mbr_addr,
+			mbr_web,
+			mbr_twit,
+			mbr_insta,
+			mbr_face,
+			mbr_brd,
+			sys_reg_date
 		FROM
-		dba_staff.MBR_BASE
-		WHERE MBR_NO = #{mbr_no}
+			dba_staff.MBR_BASE
+			WHERE MBR_NO = #{mbr_no}
 	</select>
+	
 	<update id="updateMbrInfo"
 		parameterType="com.staff.model.UserVO">
 		UPDATE MBR_BASE
 		SET
-		mbr_nm = #{mbr_nm},
-		mbr_email = #{mbr_email},
-		<!-- mbr_pw = #{mbr_pw}, -->
-		mbr_phone = #{mbr_phone},
-		mbr_cont = #{mbr_cont},
-		mbr_addr = #{mbr_addr},
-		mbr_web = #{mbr_web},
-		mbr_twit = #{mbr_twit},
-		mbr_insta = #{mbr_insta},
-		mbr_face = #{mbr_face}
+			mbr_nm = #{mbr_nm},
+			mbr_email = #{mbr_email},
+			<!-- mbr_pw = #{mbr_pw}, -->
+			mbr_phone = #{mbr_phone},
+			mbr_cont = #{mbr_cont},
+			mbr_addr = #{mbr_addr},
+			mbr_web = #{mbr_web},
+			mbr_twit = #{mbr_twit},
+			mbr_insta = #{mbr_insta},
+			mbr_face = #{mbr_face}
 		<!-- mbr_brd = #{mbr_brd} -->
 		WHERE mbr_no = #{mbr_no}
 	</update>

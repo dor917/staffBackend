@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.staff.dao.CalendarDAO;
 import com.staff.model.CalendarVO;
-import com.staff.model.ProjectVO;
 
 @Service
 public class CalendarServiceImpl implements CalendarService{
@@ -30,5 +29,9 @@ public class CalendarServiceImpl implements CalendarService{
 		return CalendarDAO.updateCalendarInfo(intCalendarVO);
 	}
 	
-	
+	@Override
+	public int deleteCalendarInfo(CalendarVO detCalendarVO) {
+		return CalendarDAO.deleteCalendarInfo(detCalendarVO);
+	}	
+
 }

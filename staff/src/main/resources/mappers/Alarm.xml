@@ -7,17 +7,18 @@
 		WHERE PRJ_NO = #{prj_no}
 	</select>
 
-<insert id="insertAlarmInfo"  parameterType="com.staff.model.AlarmVO">
-INSERT INTO PRJ_ALARM_BASE(alarm_no, prj_no, alarm_cont, SYS_REG_DATE)
-     					  
-     VALUES (#{alarm_no},
-      		 #{prj_no},
-       		 #{alarm_cont},
-        	  SYSDATE)
-</insert>
-<delete id="deleteAlarmInfo" parameterType="com.staff.model.AlarmVO">
-  DELETE FROM PRJ_AlARM_BASE
-
-	    WHERE alarm_no = #{alarm_no} and prj_no = #{prj_no}
-</delete>
+	<insert id="insertAlarmInfo"  parameterType="com.staff.model.AlarmVO">
+	INSERT INTO PRJ_ALARM_BASE(alarm_no, prj_no, alarm_cont, SYS_REG_DATE)
+	     					  
+	     VALUES (#{alarm_no},
+	      		 #{prj_no},
+	       		 #{alarm_cont},
+	        	  SYSDATE)
+	</insert>
+	
+	<delete id="deleteAlarmInfo" parameterType="com.staff.model.AlarmVO">
+	  DELETE FROM PRJ_AlARM_BASE
+	
+		    WHERE alarm_no = #{alarm_no} and prj_no = #{prj_no}
+	</delete>
 </mapper>

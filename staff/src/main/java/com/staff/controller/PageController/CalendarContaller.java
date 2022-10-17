@@ -84,4 +84,13 @@ public class CalendarContaller {
 
 		calendarService.updateCalendarInfo(uptCalendarVO);
 	}
+	
+	@RequestMapping("/deleteCalendarInfo.staff")
+	public void deleteCalendarInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		// 1, 파라미터 받아오기
+		
+		CalendarVO detCalendarVO = new CalendarVO();
+
+		calendarService.deleteCalendarInfo(detCalendarVO);
+	}
 }
