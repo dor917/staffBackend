@@ -4,28 +4,23 @@
 
 <select id="getPrjCalendarList" parameterType="String" resultType="com.staff.model.CalendarVO">
 		SELECT
+				issue_no,
 				prj_no,
-				prj_prog,
-				prj_nm,
-				prj_expl,
-				prj_start_date,
-				prj_end_date,
+				issue_type,
+				issue_tit,
+				issue_cont,
+				mbr_no,
+				issue_start_date,
+				issue_end_date,
 				sys_reg_date
 		FROM
-			PRJ_BASE
+			PRJ_CALE_BASE
 		WHERE
-			PRJ_NO IN
-		       (
-			SELECT
-				PRJ_NO
-			FROM
-				PRJ_MBR_BASE
-			WHERE
-				MBR_NO = #{mbr_no})
+			ISSUE_NO = #{issue_no})
 	</select>
 	
 	<insert id="insertCalendarInfo" parameterType="com.staff.model.CalendarVO">
-		INSERT INTO PRJ_CALE_BASE(issue_no, prj_no, issue_type, issue_tit, issue_cont, mbr_no, issue_start_date, issue_end_date)
+		INSERT INTO PRJ_CALE_BASE(issue_no, prj_no, issue_type, issue_tit, issue_cont, mbr_no, issue_start_date, issue_end_date, sys_reg_date)
 	     					  
 	     VALUES (#{issue_no},
 	     		 #{prj_no},
@@ -34,7 +29,8 @@
 	       		 #{issue_cont},
 	       		 #{mbr_no},
 	       		 #{issue_start_date},
-	       		 #{issue_end_date})
+	       		 #{issue_end_date},
+	       		 SYSDATE)
 	</insert>		
 	
 	<update id="updateCalendarInfo" parameterType="com.staff.model.CalendarVO">
@@ -43,19 +39,19 @@
 					issue_no = #{issue_no},
 					prj_no = #{prj_no},
 					issue_type = #{issue_type},
-					issue_tit = #{issue_tit}, 
-					issue_cont = #{issue_cont}, 
-					mbr_no = #{mbr_no}, 
+					issue_tit = #{issue_tit},
+					issue_cont = #{issue_cont},
+					mbr_no = #{mbr_no},
 					issue_start_date = #{issue_start_date}, 
 					issue_end_date = #{issue_end_date} 	
 					
-				WHERE issue_start_date = #{issue_start_date}
+				WHERE issue_no = #{issue_no}
 	</update>
 	
 	<delete id="deleteCalendarInfo" parameterType="com.staff.model.CalendarVO">
 		DELETE FROM PRJ_CALE_BASE
 			
-			WHERE issue_tit = #{issue_tit}
+			WHERE issue_no = #{issue_no}
 	</delete>
  
 </mapper>

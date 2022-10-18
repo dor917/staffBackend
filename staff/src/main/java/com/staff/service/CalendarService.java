@@ -9,7 +9,7 @@ import com.staff.model.CalendarVO;
 @Service
 public interface CalendarService {
 	
-	ArrayList<CalendarVO> getMbrCalendarList(String prj_no);
+	ArrayList<CalendarVO> getMbrCalendarList(String issue_no);
 
 	public int updateCalendarInfo(CalendarVO uptCalendarVO);
 

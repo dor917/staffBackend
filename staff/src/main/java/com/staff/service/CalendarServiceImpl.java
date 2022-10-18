@@ -15,8 +15,13 @@ public class CalendarServiceImpl implements CalendarService{
 	CalendarDAO CalendarDAO;
 	
 	@Override
-	public ArrayList<CalendarVO> getMbrCalendarList(String prj_no) {
-		return CalendarDAO.getMbrCalendarList(prj_no);
+	public ArrayList<CalendarVO> getMbrCalendarList(String issue_no) {
+		return CalendarDAO.getMbrCalendarList(issue_no);
+	}
+	
+	@Override
+	public int insertCalendarInfo(CalendarVO intCalendarVO) {
+		return CalendarDAO.insertCalendarInfo(intCalendarVO);
 	}
 	
 	@Override
@@ -24,11 +29,6 @@ public class CalendarServiceImpl implements CalendarService{
 		return CalendarDAO.updateCalendarInfo(uptCalendarVO);
 	}
 
-	@Override
-	public int insertCalendarInfo(CalendarVO intCalendarVO) {
-		return CalendarDAO.updateCalendarInfo(intCalendarVO);
-	}
-	
 	@Override
 	public int deleteCalendarInfo(CalendarVO detCalendarVO) {
 		return CalendarDAO.deleteCalendarInfo(detCalendarVO);

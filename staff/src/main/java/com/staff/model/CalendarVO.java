@@ -9,6 +9,7 @@ public class CalendarVO {
     private int prj_no;
     private int issue_type;
     private int mbr_no;
+    private int issue_no;
 
     private String issue_tit;
     private String issue_cont;

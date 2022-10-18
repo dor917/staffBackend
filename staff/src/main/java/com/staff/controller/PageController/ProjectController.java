@@ -111,7 +111,7 @@ public class ProjectController {
 				languageService.insertLang(language);
 			}
 		} // 돈하한테 피드백
-		return new RedirectView("http://localhost:3000/Main"); 
+		return new RedirectView("http://localhost:3000/Main");
 		
 	}
 	

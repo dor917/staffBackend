@@ -27,8 +27,8 @@ public class CalendarContaller {
 
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
 		try {
-			String mbr_no = req.getParameter("mbr_no");
-			resultArr = calendarService.getMbrCalendarList(mbr_no);
+			String issue_no = req.getParameter("issue_no");
+			resultArr = calendarService.getMbrCalendarList(issue_no);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,6 +38,7 @@ public class CalendarContaller {
 	
 	@RequestMapping("/insertCalendarInfo.staff")
 	public void insertCalendarInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		String issue_no = req.getParameter("issue_no");
 		String prj_no = req.getParameter("prj_no");
 		String issue_type = req.getParameter("issue_type");
 		String issue_tit = req.getParameter("issue_tit");
@@ -49,6 +50,7 @@ public class CalendarContaller {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 		CalendarVO intCalendarVO = new CalendarVO();
+		intCalendarVO.setPrj_no(Integer.valueOf(issue_no));
 		intCalendarVO.setPrj_no(Integer.valueOf(prj_no));
 		intCalendarVO.setIssue_type(Integer.valueOf(issue_type));
 		intCalendarVO.setIssue_tit(issue_tit);
@@ -63,6 +65,7 @@ public class CalendarContaller {
 	@RequestMapping("/updateCalendarInfo.staff")
 	public void updateCalendarInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		// 1, 파라미터 받아오기
+		String issue_no = req.getParameter("issue_no");
 		String prj_no = req.getParameter("prj_no");
 		String issue_type = req.getParameter("issue_type");
 		String issue_tit = req.getParameter("issue_tit");
@@ -74,6 +77,7 @@ public class CalendarContaller {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 		CalendarVO uptCalendarVO = new CalendarVO();
+		uptCalendarVO.setPrj_no(Integer.valueOf(issue_no));
 		uptCalendarVO.setPrj_no(Integer.valueOf(prj_no));
 		uptCalendarVO.setIssue_type(Integer.valueOf(issue_type));
 		uptCalendarVO.setIssue_tit(issue_tit);
@@ -89,7 +93,10 @@ public class CalendarContaller {
 	public void deleteCalendarInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		// 1, 파라미터 받아오기
 		
+		String issue_no = req.getParameter("issue_no");
+		
 		CalendarVO detCalendarVO = new CalendarVO();
+		detCalendarVO.setPrj_no(Integer.valueOf(issue_no));
 
 		calendarService.deleteCalendarInfo(detCalendarVO);
 	}
