@@ -23,12 +23,12 @@ public class CalendarContaller {
 	
 	@CrossOrigin
 	@RequestMapping("/getPrjCalendarList.staff")
-	public ArrayList<CalendarVO> getMbrCalendarList (HttpServletRequest req, HttpServletResponse res){
+	public ArrayList<CalendarVO> getPrjCalendarList (HttpServletRequest req, HttpServletResponse res){
 
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
 		try {
 			String issue_no = req.getParameter("issue_no");
-			resultArr = calendarService.getMbrCalendarList(issue_no);
+			resultArr = calendarService.getPrjCalendarList(issue_no);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
