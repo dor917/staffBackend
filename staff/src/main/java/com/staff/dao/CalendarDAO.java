@@ -9,7 +9,7 @@ import com.staff.model.CalendarVO;
 @Mapper
 public interface CalendarDAO {
 	
-	public ArrayList<CalendarVO> getMbrCalendarList(String issue_no);
+	public ArrayList<CalendarVO> getPrjCalendarList(String issue_no);
 
 	public int updateCalendarInfo(CalendarVO uptCalendarVO);
 	
