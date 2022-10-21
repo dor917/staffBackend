@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class Language {
+public class LanguageVO {
 	private int prj_no;
 	private int lan_no;
 	

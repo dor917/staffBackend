@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.staff.model.Language;
+import com.staff.model.LanguageVO;
 import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
 import com.staff.service.LanguageService;
@@ -105,7 +105,7 @@ public class ProjectController {
 			intProjectMbrVO.setMbr_posi(mbr_posi);
 			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
 			for (int i = 0; i < prj_langs.length; i++) {
-				Language language = new Language();
+				LanguageVO language = new LanguageVO();
 				language.setPrj_no(prj_no);
 				language.setLan_no(Integer.valueOf(prj_langs[i]));
 				languageService.insertLang(language);

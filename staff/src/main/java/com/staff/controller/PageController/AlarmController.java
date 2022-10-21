@@ -17,7 +17,7 @@ import com.staff.service.AlarmServiceImpl;
 
 @RestController
 @MapperScan(basePackages = "com.staff.service")
-public class AlarmContller {
+public class AlarmController {
 	
 	@Autowired(required=true)
 	AlarmServiceImpl alarmService;

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
-import com.staff.model.Language;
+import com.staff.model.LanguageVO;
 
 @Service
 public interface LanguageService {
-	public int insertLang(Language language);
+	public int insertLang(LanguageVO language);
 
-	public ArrayList<Language> selectPrjLang(int prj_no);
+	public ArrayList<LanguageVO> selectPrjLang(int prj_no);
 }

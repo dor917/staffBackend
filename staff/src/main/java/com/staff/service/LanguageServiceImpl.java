@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.staff.dao.CalendarDAO;
 import com.staff.dao.LanguageDAO;
-import com.staff.model.Language;
+import com.staff.model.LanguageVO;
 
 @Service
 public class LanguageServiceImpl implements LanguageService{
@@ -16,11 +16,11 @@ public class LanguageServiceImpl implements LanguageService{
 	LanguageDAO LanguageDAO;
 	
 	@Override
-	public int insertLang(Language language) {
+	public int insertLang(LanguageVO language) {
 		return LanguageDAO.insertLang(language);
 	}
 	@Override
-	public ArrayList<Language> selectPrjLang(int prj_no) {
+	public ArrayList<LanguageVO> selectPrjLang(int prj_no) {
 		return LanguageDAO.selectPrjLang(prj_no);
 	}
 }

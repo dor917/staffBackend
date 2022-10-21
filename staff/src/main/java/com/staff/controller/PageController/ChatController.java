@@ -33,14 +33,14 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import com.staff.model.ChatListVo;
+import com.staff.model.ChatListVO;
 import com.staff.model.ChatVO;
 import com.staff.util.ListeningThread;
 import com.staff.util.SFTPUtil;
 import com.staff.util.WritingThread;
 
 @RestController
-public class ChatContaller {
+public class ChatController {
 	final static String ID = "staff";
 	final static String IP = "54.180.134.66";
 	final static int SSHPORT = 22;
@@ -69,9 +69,9 @@ public class ChatContaller {
 	}
 
 	@RequestMapping("/getChatHistory.staff")
-	public ArrayList<ChatListVo> getChatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public ArrayList<ChatListVO> getChatHistory(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		res.setHeader("Access-Control-Allow-Origin", "*"); // 허용대상 도메인
-		ArrayList<ChatListVo> result = new ArrayList<>();
+		ArrayList<ChatListVO> result = new ArrayList<>();
 
 		Session session = null;
 		JSch jSch = null;
@@ -124,7 +124,7 @@ public class ChatContaller {
 						date = simpleDateFormat.parse(file);
 						dateStr = changeSimpleDateFormat.format(date);
 					}
-					ChatListVo chatListVo = new ChatListVo();
+					ChatListVO chatListVo = new ChatListVO();
 					ArrayList<ChatVO> reListList = new ArrayList<>();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(channelSftp.get(file)));
 					while ((readStr = reader.readLine()) != null && !"".equals(readStr)) {

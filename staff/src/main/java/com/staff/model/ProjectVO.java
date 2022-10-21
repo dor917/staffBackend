@@ -28,6 +28,6 @@ public class ProjectVO {
 	private String chat_url;
 	private Date chat_sys_reg_date;
 	
-	private ArrayList<Language> languages;
+	private ArrayList<LanguageVO> languages;
 
 }

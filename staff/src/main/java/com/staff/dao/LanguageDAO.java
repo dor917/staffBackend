@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.staff.model.Language;
+import com.staff.model.LanguageVO;
 
 @Mapper
 public interface LanguageDAO {
 
 
-	public int insertLang(Language language);
-	public ArrayList<Language> selectPrjLang(int prj_no);
+	public int insertLang(LanguageVO language);
+	public ArrayList<LanguageVO> selectPrjLang(int prj_no);
 }

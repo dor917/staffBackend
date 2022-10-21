@@ -16,7 +16,7 @@ import com.staff.model.CalendarVO;
 import com.staff.service.CalendarServiceImpl;
 
 @RestController
-public class CalendarContaller {
+public class CalendarController {
 	
 	@Autowired(required = true)
 	CalendarServiceImpl calendarService;
