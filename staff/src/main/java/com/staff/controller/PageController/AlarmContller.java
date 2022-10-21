@@ -28,9 +28,8 @@ public class AlarmContller {
 
 		ArrayList<AlarmVO> resultArr = new ArrayList<AlarmVO>();
 		try {
-			String prj_no = req.getParameter("prj_no");
-			resultArr = alarmService.getPrjAlarmList(prj_no);
-			System.out.println(prj_no);
+			String alarm_no = req.getParameter("alarm_no");
+			resultArr = alarmService.getPrjAlarmList(alarm_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -40,12 +39,10 @@ public class AlarmContller {
  
 	@RequestMapping("/insertAlarmInfo.staff")
 	public void insetAlarminfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception{
-		String alarm_no = req.getParameter("alarm_no");
 		String prj_no =  req.getParameter("prj_no");
 		String alarm_cont =  req.getParameter("alarm_cont");
 	
 		AlarmVO intAlarmVO = new AlarmVO();
-		intAlarmVO.setAlarm_no(Integer.valueOf(alarm_no));
 		intAlarmVO.setPrj_no(Integer.valueOf(prj_no));
 		intAlarmVO.setAlarm_cont(alarm_cont);
 		
@@ -55,11 +52,9 @@ public class AlarmContller {
 	@RequestMapping("/deleteAlarmInfo.staff")
 	public void deleteAlarmInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String alarm_no = req.getParameter("alarm_no");
-		String prj_no = req.getParameter("prj_no");
 		
 		AlarmVO detAlarmVO = new AlarmVO();
 		detAlarmVO.setAlarm_no(Integer.valueOf(alarm_no));
-		detAlarmVO.setPrj_no(Integer.valueOf(prj_no));
 		
 		alarmService.deleteAlarmInfo(detAlarmVO);
 	}

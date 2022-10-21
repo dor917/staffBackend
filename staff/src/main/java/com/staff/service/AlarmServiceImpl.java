@@ -15,13 +15,15 @@ public class AlarmServiceImpl implements AlarmService{
 	AlarmDAO AlarmDAO;
 	
 	@Override
-	public ArrayList<AlarmVO> getPrjAlarmList(String prj_no) {
-		return AlarmDAO.getPrjAlarmList(prj_no);
+	public ArrayList<AlarmVO> getPrjAlarmList(String alarm_no) {
+		return AlarmDAO.getPrjAlarmList(alarm_no);
 	}
+	
 	@Override
 	public int insertAlarmInfo(AlarmVO intAlarmVO) {
 	return AlarmDAO.insertAlarmInfo(intAlarmVO);
 	}
+	
 	@Override
 	public int deleteAlarmInfo(AlarmVO detAlarmVO) {
 		return AlarmDAO.deleteAlarmInfo(detAlarmVO);
