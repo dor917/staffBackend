@@ -8,7 +8,7 @@ import com.staff.model.LanguageVO;
 
 @Service
 public interface LanguageService {
-	public int insertLang(LanguageVO language);
+	public int insertLang(LanguageVO languageVO);
 
 	public ArrayList<LanguageVO> selectPrjLang(int prj_no);
 }

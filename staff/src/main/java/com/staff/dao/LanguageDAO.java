@@ -10,6 +10,6 @@ import com.staff.model.LanguageVO;
 public interface LanguageDAO {
 
 
-	public int insertLang(LanguageVO language);
+	public int insertLang(LanguageVO languageVO);
 	public ArrayList<LanguageVO> selectPrjLang(int prj_no);
 }

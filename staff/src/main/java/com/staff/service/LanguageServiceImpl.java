@@ -16,8 +16,8 @@ public class LanguageServiceImpl implements LanguageService{
 	LanguageDAO LanguageDAO;
 	
 	@Override
-	public int insertLang(LanguageVO language) {
-		return LanguageDAO.insertLang(language);
+	public int insertLang(LanguageVO languageVO) {
+		return LanguageDAO.insertLang(languageVO);
 	}
 	@Override
 	public ArrayList<LanguageVO> selectPrjLang(int prj_no) {
