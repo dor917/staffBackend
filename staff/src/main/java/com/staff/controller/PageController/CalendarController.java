@@ -27,8 +27,8 @@ public class CalendarController {
 
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
 		try {
-			String issue_no = req.getParameter("issue_no");
-			resultArr = calendarService.getPrjCalendarList(issue_no);
+			String prj_no = req.getParameter("prj_no");
+			resultArr = calendarService.getPrjCalendarList(prj_no);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

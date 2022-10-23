@@ -121,7 +121,6 @@ public class ProjectController {
 		String prj_no = req.getParameter("prj_no");
 		String mbr_posi = req.getParameter("mbr_posi");
 		
-		
 		System.out.println(mbr_no);
 		System.out.println(prj_no);
 		System.out.println(mbr_posi);

@@ -15,8 +15,8 @@ public class CalendarServiceImpl implements CalendarService{
 	CalendarDAO CalendarDAO;
 	
 	@Override
-	public ArrayList<CalendarVO> getPrjCalendarList(String issue_no) {
-		return CalendarDAO.getPrjCalendarList(issue_no);
+	public ArrayList<CalendarVO> getPrjCalendarList(String prj_no) {
+		return CalendarDAO.getPrjCalendarList(prj_no);
 	}
 	
 	@Override

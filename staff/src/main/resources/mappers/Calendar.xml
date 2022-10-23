@@ -16,7 +16,7 @@
 		FROM
 			PRJ_CALE_BASE
 		WHERE
-			ISSUE_NO = #{issue_no}
+			prj_no = #{prj_no}
 	</select>
 	
 	<insert id="insertCalendarInfo" parameterType="com.staff.model.CalendarVO">
