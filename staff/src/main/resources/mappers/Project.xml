@@ -2,6 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.ProjectDAO">
 
+	<select id="getProjectInfo" parameterType="String" resultType="com.staff.model.ProjectVO">
+		SELECT
+			prj_no,
+			prj_prog,
+			prj_nm,
+			prj_expl,
+			TO_CHAR(prj_start_date, 'YYYY-MM-DD') AS str_prj_start_date,
+			TO_CHAR(prj_end_date, 'YYYY-MM-DD') AS str_prj_end_date,
+			sys_reg_date
+		FROM
+			PRJ_BASE
+		WHERE
+			PRJ_NO = #{prj_no}
+	</select>
+
 	<select id="getMbrProjectList" parameterType="String" resultType="com.staff.model.ProjectVO">
 		SELECT
 			prj_no,
@@ -72,6 +87,8 @@
 		DELETE FROM PRJ_BASE
 		WHERE prj_no = #{prj_no}
 	</delete>
+	
+
 	
 	<insert id="insertProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">

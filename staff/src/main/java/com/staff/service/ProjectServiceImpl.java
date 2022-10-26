@@ -47,6 +47,12 @@ public class ProjectServiceImpl implements ProjectSerivce{
 	public int selectseq() {
 		return projectDAO.selectSeq();
 	}
+	
+	@Override
+	public ProjectVO getProjectInfo(String prj_no) {
+		// TODO Auto-generated method stub
+		return projectDAO.getProjectInfo(prj_no);
+	}
 }
 
 

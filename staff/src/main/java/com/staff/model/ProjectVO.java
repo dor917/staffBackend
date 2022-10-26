@@ -18,7 +18,8 @@ public class ProjectVO {
 	private Date prj_start_date;
 	private Date prj_end_date;
 	private Date sys_reg_date;
-
+	private String str_prj_start_date;
+	private String str_prj_end_date;
 //	PRJ_FILE_BASE
 	private String file_url;
 	private Date file_sys_reg_date;

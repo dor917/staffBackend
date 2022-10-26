@@ -45,8 +45,23 @@ public class ProjectController {
 		return resultArr;
 	}
 	
+	@CrossOrigin
+	@RequestMapping("/getProjectInfo.staff")
+	public ProjectVO getProjectInfo (HttpServletRequest req, HttpServletResponse res){
+		ProjectVO projectVO = null;
+		try {
+			String prj_no = req.getParameter("prj_no");
+			projectVO = projectService.getProjectInfo(prj_no);
+			projectVO.setLanguages(languageService.selectPrjLang(Integer.valueOf(prj_no)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return projectVO;
+	}
+	
+	
 	@RequestMapping("/updateProjectInfo.staff")
-	public void updateProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+	public RedirectView updateProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		// 1, 파라미터 받아오기
 		String prj_no = req.getParameter("prj_no");
 		String prj_nm = req.getParameter("prj_nm");
@@ -68,6 +83,11 @@ public class ProjectController {
 		
 		projectService.updateProjectInfo(uptProjectVO);
 		
+		//프로젝트 번호로 언어 삭제하는거 호출 languageService.메서드 (prj_no) ? valueOf(prj_no)
+		
+		//언어 인서트 호출
+		
+		return new RedirectView("http://localhost:3000/Project");
 	}
 	
 	@RequestMapping("/insertProjectInfo.staff")
@@ -121,6 +141,7 @@ public class ProjectController {
 		ProjectVO detProjectVO = new ProjectVO();
 		detProjectVO.setPrj_no(Integer.valueOf(prj_no));
 		
+		projectService.deleteProjectInfo(detProjectVO);
 		return new RedirectView("http://localhost:3000/Main");
 	}
 	

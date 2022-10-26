@@ -23,4 +23,6 @@ public interface ProjectDAO {
 	public int deleteProjectMbrInfo(PrjMbrVO detProjectMbrVO);
 	
 	public int selectSeq();
+
+	public ProjectVO getProjectInfo(String prj_no);
 }
