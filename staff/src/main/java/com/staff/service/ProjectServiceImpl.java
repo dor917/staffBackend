@@ -29,6 +29,11 @@ public class ProjectServiceImpl implements ProjectSerivce{
 	public int insertProjectInfo(ProjectVO intProjectVO) {
 		return projectDAO.insertProjectInfo(intProjectVO);
 	}
+	
+	@Override
+	public int deleteProjectInfo(ProjectVO detProjectVO) {
+		return projectDAO.deleteProjectInfo(detProjectVO);
+	}
 
 	@Override
 	public int insertProjectMbrInfo(PrjMbrVO intProjectMbrVO) {

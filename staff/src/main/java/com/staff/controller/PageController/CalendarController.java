@@ -24,7 +24,6 @@ public class CalendarController {
 	
 	@CrossOrigin
 	@RequestMapping("/getPrjCalendarList.staff")
-
 	public ArrayList<CalendarVO> getPrjCalendarList(HttpServletRequest req, HttpServletResponse res, @CookieValue(name = "prj_no") int prj_no){
 
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
@@ -36,7 +35,6 @@ public class CalendarController {
 		}
 		return resultArr;
 	}
-
 	
 	@RequestMapping("/insertCalendarInfo.staff")
 	public void insertCalendarInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {

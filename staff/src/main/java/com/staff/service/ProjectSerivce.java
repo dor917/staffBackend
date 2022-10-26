@@ -10,6 +10,7 @@ public interface ProjectSerivce {
 	public ArrayList<ProjectVO> getMbrProjectList(String mbr_no);
 	public int updateProjectInfo(ProjectVO uptProjectVO);
 	public int insertProjectInfo(ProjectVO intProjectVO);
+	public int deleteProjectInfo(ProjectVO detProjectVO);
 	public int insertProjectMbrInfo(PrjMbrVO intProjectVO);
 	public int deleteProjectMbrInfo(PrjMbrVO detProjectVO);
 	public int selectseq();

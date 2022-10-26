@@ -6,23 +6,23 @@
 		SELECT
 			prj_no,
 			prj_prog,
-				prj_nm,
-				prj_expl,
-				prj_start_date,
-				prj_end_date,
-				sys_reg_date
+			prj_nm,
+			prj_expl,
+			prj_start_date,
+			prj_end_date,
+			sys_reg_date
 		FROM
-				PRJ_BASE
+			PRJ_BASE
 		WHERE
-				PRJ_NO IN
-				(
-					SELECT
-						PRJ_NO
-					FROM
-						PRJ_MBR_BASE
-					WHERE
-						MBR_NO = #{mbr_no}
-				)
+			PRJ_NO IN
+			(
+				SELECT
+					PRJ_NO
+				FROM
+					PRJ_MBR_BASE
+				WHERE
+					MBR_NO = #{mbr_no}
+			)
 
 	</select>
 	
@@ -67,6 +67,12 @@
 
 	</insert>
 
+	<delete id="deleteProjectInfo"
+		parameterType="com.staff.model.ProjectVO">
+		DELETE FROM PRJ_BASE
+		WHERE prj_no = #{prj_no}
+	</delete>
+	
 	<insert id="insertProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">
 		INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)
@@ -77,8 +83,6 @@
 	<delete id="deleteProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">
 		DELETE FROM PRJ_MBR_BASE
-
-		<!-- help -->
 		WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
 	</delete>
 

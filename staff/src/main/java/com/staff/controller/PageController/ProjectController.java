@@ -114,6 +114,16 @@ public class ProjectController {
 		
 	}
 	
+	@RequestMapping("/deleteProjectInfo.staff")
+	public RedirectView deleteProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+		String prj_no = req.getParameter("prj_no");
+		
+		ProjectVO detProjectVO = new ProjectVO();
+		detProjectVO.setPrj_no(Integer.valueOf(prj_no));
+		
+		return new RedirectView("http://localhost:3000/Main");
+	}
+	
 	@RequestMapping("/insertProjectMbrInfo.staff")
 	public RedirectView insertProjectMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String mbr_no = req.getParameter("mbr_no");
@@ -135,7 +145,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping("/deleteProjectMbrInfo.staff")
-	public void deleteProjectInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
+	public void deleteProjectMbrInfo(HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse res) throws Exception {
 		String mbr_no = req.getParameter("mbr_no");
 		String prj_no = req.getParameter("prj_no");
 		
