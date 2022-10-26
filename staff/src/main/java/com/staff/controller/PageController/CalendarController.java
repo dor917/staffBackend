@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,12 +24,11 @@ public class CalendarController {
 	
 	@CrossOrigin
 	@RequestMapping("/getPrjCalendarList.staff")
-	public ArrayList<CalendarVO> getPrjCalendarList (HttpServletRequest req, HttpServletResponse res){
+	public ArrayList<CalendarVO> getPrjCalendarList(HttpServletRequest req, HttpServletResponse res, @CookieValue(name = "prj_no") int prj_no){
 
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
 		try {
-			String prj_no = req.getParameter("prj_no");
-			resultArr = calendarService.getPrjCalendarList(prj_no);
+			resultArr = calendarService.getPrjCalendarList(Integer.toString(prj_no));
 		
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.staff.model.AlarmVO;
-import com.staff.model.PrjMbrVO;
 
 @Mapper
 public interface AlarmDAO {

@@ -3,8 +3,6 @@ package com.staff.model;
 import java.util.Date;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class UserVO {

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.staff.dao.MemberDAO;
-import com.staff.model.ProjectVO;
 import com.staff.model.UserVO;
 
 @Service

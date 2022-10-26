@@ -1,7 +1,6 @@
 package com.staff.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import lombok.Data;
 
