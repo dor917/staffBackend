@@ -9,17 +9,28 @@ import com.staff.dao.LanguageDAO;
 import com.staff.model.LanguageVO;
 
 @Service
-public class LanguageServiceImpl implements LanguageService{
-	
+public class LanguageServiceImpl implements LanguageService {
+
 	@Autowired
 	LanguageDAO LanguageDAO;
-	
-	@Override
-	public int insertLang(LanguageVO languageVO) {
-		return LanguageDAO.insertLang(languageVO);
-	}
+
 	@Override
 	public ArrayList<LanguageVO> selectPrjLang(int prj_no) {
 		return LanguageDAO.selectPrjLang(prj_no);
+	}
+
+	@Override
+	public int insertLang(LanguageVO intlanguageVO) {
+		return LanguageDAO.insertLang(intlanguageVO);
+	}
+
+	@Override
+	public int updateLang(LanguageVO uptlanguageVO) {
+		return LanguageDAO.updateLang(uptlanguageVO);
+	}
+
+	@Override
+	public int deleteLang(LanguageVO detlanguageVO) {
+		return LanguageDAO.deleteLang(detlanguageVO);
 	}
 }

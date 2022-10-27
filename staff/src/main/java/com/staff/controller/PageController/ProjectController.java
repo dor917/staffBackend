@@ -84,8 +84,18 @@ public class ProjectController {
 		projectService.updateProjectInfo(uptProjectVO);
 		
 		//프로젝트 번호로 언어 삭제하는거 호출 languageService.메서드 (prj_no) ? valueOf(prj_no)
+		LanguageVO detLanguageVO = new LanguageVO();
+		detLanguageVO.setPrj_no(Integer.valueOf(prj_no));
+		
+		languageService.deleteLang(detLanguageVO);
 		
 		//언어 인서트 호출
+		for (int i = 0; i < prj_langs.length; i++) {
+			LanguageVO intlanguageVO = new LanguageVO();
+			intlanguageVO.setPrj_no(Integer.valueOf(prj_no));
+			intlanguageVO.setLan_no(Integer.valueOf(prj_langs[i]));
+			languageService.insertLang(intlanguageVO);
+		}
 		
 		return new RedirectView("http://localhost:3000/Project");
 	}
@@ -124,10 +134,10 @@ public class ProjectController {
 			intProjectMbrVO.setMbr_posi(mbr_posi);
 			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
 			for (int i = 0; i < prj_langs.length; i++) {
-				LanguageVO language = new LanguageVO();
-				language.setPrj_no(prj_no);
-				language.setLan_no(Integer.valueOf(prj_langs[i]));
-				languageService.insertLang(language);
+				LanguageVO intlanguageVO = new LanguageVO();
+				intlanguageVO.setPrj_no(prj_no);
+				intlanguageVO.setLan_no(Integer.valueOf(prj_langs[i]));
+				languageService.insertLang(intlanguageVO);
 			}
 		} // 돈하한테 피드백
 		return new RedirectView("http://localhost:3000/Main");

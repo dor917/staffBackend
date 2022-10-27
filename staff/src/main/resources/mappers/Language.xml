@@ -12,8 +12,19 @@
 	<insert id="insertLang"
 		parameterType="com.staff.model.LanguageVO">
 		INSERT INTO PRJ_LANG_BASE(prj_no, lan_no, SYS_REG_DATE)
-
 		VALUES (#{prj_no}, #{lan_no}, SYSDATE)
 	</insert>
 	
+	<update id="updateLang"
+		parameterType="com.staff.model.LanguageVO">
+		UPDATE PRJ_LANG_BASE
+		SET lan_no = #{lan_no}
+		WHERE prj_no = #{prj_no}
+	</update>
+	
+	<delete id="deleteLang"
+		parameterType="com.staff.model.LanguageVO">
+		DELETE FROM PRJ_LANG_BASE
+		WHERE prj_no = #{prj_no}
+	</delete>
 </mapper>
