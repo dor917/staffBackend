@@ -88,8 +88,6 @@
 		WHERE prj_no = #{prj_no}
 	</delete>
 	
-
-	
 	<insert id="insertProjectMbrInfo"
 		parameterType="com.staff.model.PrjMbrVO">
 		INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)

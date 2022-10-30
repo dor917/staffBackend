@@ -24,16 +24,34 @@ public class CalendarController {
 	
 	@CrossOrigin
 	@RequestMapping("/getPrjCalendarList.staff")
-	public ArrayList<CalendarVO> getPrjCalendarList(HttpServletRequest req, HttpServletResponse res, @CookieValue(name = "prj_no") int prj_no){
+	public ArrayList<CalendarVO> getPrjCalendarList(HttpServletRequest req, HttpServletResponse res) {
 
+		String prj_no = req.getParameter("prj_no");
+		
 		ArrayList<CalendarVO> resultArr = new ArrayList<CalendarVO>();
 		try {
-			resultArr = calendarService.getPrjCalendarList(Integer.toString(prj_no));
+			resultArr = calendarService.getPrjCalendarList(prj_no);
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return resultArr;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/getPrjIssueList.staff")
+	public CalendarVO getPrjIssueList(HttpServletRequest req, HttpServletResponse res) {
+
+		String issue_no = req.getParameter("issue_no");
+		
+		CalendarVO calendarVO = null;
+		try {
+			calendarVO = calendarService.getPrjIssueList(issue_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return calendarVO;
 	}
 	
 	@RequestMapping("/insertCalendarInfo.staff")

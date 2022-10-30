@@ -20,6 +20,11 @@ public class CalendarServiceImpl implements CalendarService{
 	}
 	
 	@Override
+	public CalendarVO getPrjIssueList(String issue_no) {
+		return CalendarDAO.getPrjIssueList(issue_no);
+	}
+	
+	@Override
 	public int insertCalendarInfo(CalendarVO intCalendarVO) {
 		return CalendarDAO.insertCalendarInfo(intCalendarVO);
 	}
