@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.staff.dao.AlarmDAO">
 	<select id="getPrjAlarmList" parameterType="String" resultType="com.staff.model.AlarmVO">
 		SELECT 
@@ -14,17 +13,16 @@
 			ALARM_NO = #{alarm_no}
 	</select>
 
-	<insert id="insertAlarmInfo"  parameterType="com.staff.model.AlarmVO">
+	<insert id="insertAlarmInfo" parameterType="com.staff.model.AlarmVO">
 		INSERT INTO PRJ_ALARM_BASE(alarm_no, prj_no, alarm_cont, SYS_REG_DATE)
 	    VALUES (ALARM_SEQ.nextval,
 	    		#{prj_no},
 	       		#{alarm_cont},
 	        	SYSDATE)
 	</insert>
-	
+
 	<delete id="deleteAlarmInfo" parameterType="com.staff.model.AlarmVO">
 		DELETE FROM PRJ_AlARM_BASE
 		WHERE alarm_no = #{alarm_no}
 	</delete>
-	
 </mapper>

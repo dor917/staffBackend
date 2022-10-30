@@ -16,5 +16,7 @@ public class CalendarVO {
 
     private Date issue_start_date;
     private Date issue_end_date;
+    private String str_issue_start_date;
+	private String str_issue_end_date;
 
 }

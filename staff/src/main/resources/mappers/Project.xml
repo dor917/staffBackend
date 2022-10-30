@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.ProjectDAO">
-
 	<select id="getProjectInfo" parameterType="String" resultType="com.staff.model.ProjectVO">
 		SELECT
 			prj_no,
@@ -40,40 +39,26 @@
 			)
 
 	</select>
-	
+
 	<select id="selectSeq" resultType="int">
 		SELECT PRJ_SEQ.nextval
 		FROM DUAL
 	</select>
 
-	<update id="updateProjectInfo"
-		parameterType="com.staff.model.ProjectVO">
+	<update id="updateProjectInfo" parameterType="com.staff.model.ProjectVO">
 		UPDATE PRJ_BASE
 		SET
-		prj_no = #{prj_no},
-		prj_prog = #{prj_prog},
-		prj_nm = #{prj_nm},
-		prj_expl = #{prj_expl},
-		prj_start_date = #{prj_start_date},
-		prj_end_date = #{prj_end_date}
-
-		WHERE prj_no = #{prj_no}
+			prj_no = #{prj_no},
+			prj_prog = #{prj_prog},
+			prj_nm = #{prj_nm},
+			prj_expl = #{prj_expl},
+			prj_start_date = #{prj_start_date},
+			prj_end_date = #{prj_end_date}
+		WHERE 
+			prj_no = #{prj_no}
 	</update>
 
-<!-- 	<insert id="insertProjectInfo"
-		parameterType="com.staff.model.ProjectVO">
-		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl, 
-		prj_prog, prj_start_date, prj_end_date,
-		SYS_REG_DATE)
-		VALUES
-		(#{prj_no}, #{prj_nm}, 
-		#{prj_expl}, #{prj_prog}, #{prj_start_date},
-		#{prj_end_date}, SYSDATE)
-
-	</insert> -->
-	
- 	<insert id="insertProjectInfo"
-		parameterType="com.staff.model.ProjectVO">
+	<insert id="insertProjectInfo" parameterType="com.staff.model.ProjectVO">
 		INSERT INTO PRJ_BASE(prj_no, prj_nm, prj_expl, prj_prog, prj_start_date, prj_end_date, sys_reg_date)
 		VALUES
 		(#{prj_no}, #{prj_nm},
@@ -82,23 +67,19 @@
 
 	</insert>
 
-	<delete id="deleteProjectInfo"
-		parameterType="com.staff.model.ProjectVO">
+	<delete id="deleteProjectInfo" parameterType="com.staff.model.ProjectVO">
 		DELETE FROM PRJ_BASE
 		WHERE prj_no = #{prj_no}
 	</delete>
-	
-	<insert id="insertProjectMbrInfo"
-		parameterType="com.staff.model.PrjMbrVO">
+
+	<insert id="insertProjectMbrInfo" parameterType="com.staff.model.PrjMbrVO">
 		INSERT INTO PRJ_MBR_BASE(mbr_no, prj_no, mbr_posi, SYS_REG_DATE)
 		VALUES (#{mbr_no}, #{prj_no},
 		#{mbr_posi}, SYSDATE)
 	</insert>
 
-	<delete id="deleteProjectMbrInfo"
-		parameterType="com.staff.model.PrjMbrVO">
+	<delete id="deleteProjectMbrInfo" parameterType="com.staff.model.PrjMbrVO">
 		DELETE FROM PRJ_MBR_BASE
 		WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
 	</delete>
-
 </mapper>

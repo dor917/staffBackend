@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.CalendarDAO">
-
-<select id="getPrjCalendarList" parameterType="String" resultType="com.staff.model.CalendarVO">
+	<select id="getPrjCalendarList" parameterType="String" resultType="com.staff.model.CalendarVO">
 		SELECT
 			issue_no,
 			prj_no,
@@ -18,7 +17,7 @@
 		WHERE
 			prj_no = #{prj_no}
 	</select>
-	
+
 	<select id="getPrjIssueList" parameterType="String" resultType="com.staff.model.CalendarVO">
 		SELECT
 			issue_no,
@@ -26,16 +25,16 @@
 			issue_type,
 			issue_tit,
 			issue_cont,
-			mbr_no,
-			issue_start_date,
-			issue_end_date,
+			mbr_no, 
+			TO_CHAR(issue_start_date, 'YYYY-MM-DD') AS str_issue_start_date,
+			TO_CHAR(issue_end_date, 'YYYY-MM-DD') AS str_issue_end_date,
 			sys_reg_date
 		FROM
 			PRJ_CALE_BASE
 		WHERE
 			issue_no = #{issue_no}
 	</select>
-	
+
 	<insert id="insertCalendarInfo" parameterType="com.staff.model.CalendarVO">
 		INSERT INTO PRJ_CALE_BASE(issue_no, prj_no, issue_type, issue_tit, issue_cont, mbr_no, issue_start_date, issue_end_date, sys_reg_date)
 	    VALUES (CALE_SEQ.nextval,
@@ -47,8 +46,8 @@
 	       		#{issue_start_date},
 	       		#{issue_end_date},
 	       		SYSDATE)
-	</insert>		
-	
+	</insert>
+
 	<update id="updateCalendarInfo" parameterType="com.staff.model.CalendarVO">
 		UPDATE PRJ_CALE_BASE
 		SET
@@ -62,10 +61,9 @@
 			issue_end_date = #{issue_end_date}
 		WHERE issue_no = #{issue_no}
 	</update>
-	
+
 	<delete id="deleteCalendarInfo" parameterType="com.staff.model.CalendarVO">
 		DELETE FROM PRJ_CALE_BASE
 		WHERE issue_no = #{issue_no}
 	</delete>
- 
 </mapper>
