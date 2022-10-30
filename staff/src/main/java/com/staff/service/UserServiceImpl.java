@@ -45,7 +45,11 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public ArrayList<UserVO> selectMbrNm(String mbr_nm) {
-		// TODO Auto-generated method stub
 		return memberDAO.selectMbrNm(mbr_nm);
+	}
+	
+	@Override
+	public ArrayList<UserVO> getProjecMbrtList(String prj_no) {
+		return memberDAO.getProjecMbrtList(prj_no);
 	}
 }

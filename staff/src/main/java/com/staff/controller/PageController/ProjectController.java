@@ -2,6 +2,7 @@ package com.staff.controller.PageController;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
 import com.staff.service.LanguageServiceImpl;
 import com.staff.service.ProjectServiceImpl;
+import com.staff.service.UserServiceImpl;
 
 @RestController
 @MapperScan(basePackages = "com.staff.service")
@@ -28,6 +30,9 @@ public class ProjectController {
 	
 	@Autowired(required=true)
 	LanguageServiceImpl languageService;
+	
+	@Autowired(required=true)
+	UserServiceImpl userServiceImpl;
 
 	@CrossOrigin
 	@RequestMapping("/getMbrProjectList.staff")
@@ -53,6 +58,7 @@ public class ProjectController {
 			String prj_no = req.getParameter("prj_no");
 			projectVO = projectService.getProjectInfo(prj_no);
 			projectVO.setLanguages(languageService.selectPrjLang(Integer.valueOf(prj_no)));
+			projectVO.setUserVOs(userServiceImpl.getProjecMbrtList(prj_no));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,7 +76,9 @@ public class ProjectController {
 		String prj_start_date = req.getParameter("prj_start_date");
 		String prj_end_date = req.getParameter("prj_end_date");
 		String prj_lang = req.getParameter("prj_lang");
-		String[] prj_langs = prj_lang.split(",");
+		String strMbr_no = req.getParameter("mbr_nos");
+	
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		ProjectVO uptProjectVO = new ProjectVO();
@@ -82,19 +90,34 @@ public class ProjectController {
 		uptProjectVO.setPrj_end_date(formatter.parse(prj_end_date));
 		
 		projectService.updateProjectInfo(uptProjectVO);
+		if (null != strMbr_no && !"".equals(strMbr_no)) {
+			projectService.deleteProjectMbrInfoByPrjNo(prj_no);
+			String[] mbr_nos = strMbr_no.split(",");
+			int mbr_posi = 1;
+			for (int i = 0; i < mbr_nos.length; i++) {
+				PrjMbrVO proMbrVO = new PrjMbrVO();
+				proMbrVO.setMbr_no(Integer.valueOf(mbr_nos[i]));
+				proMbrVO.setPrj_no(Integer.valueOf(prj_no));
+				proMbrVO.setMbr_posi(mbr_posi);
+				projectService.insertProjectMbrInfo(proMbrVO);
+			}
+		}
 		
-		//프로젝트 번호로 언어 삭제하는거 호출 languageService.메서드 (prj_no) ? valueOf(prj_no)
-		LanguageVO detLanguageVO = new LanguageVO();
-		detLanguageVO.setPrj_no(Integer.valueOf(prj_no));
-		
-		languageService.deleteLang(detLanguageVO);
-		
-		//언어 인서트 호출
-		for (int i = 0; i < prj_langs.length; i++) {
-			LanguageVO intlanguageVO = new LanguageVO();
-			intlanguageVO.setPrj_no(Integer.valueOf(prj_no));
-			intlanguageVO.setLan_no(Integer.valueOf(prj_langs[i]));
-			languageService.insertLang(intlanguageVO);
+		if (null != prj_lang && !"".equals(prj_lang)) {
+			String[] prj_langs = prj_lang.split(",");
+			//프로젝트 번호로 언어 삭제하는거 호출 languageService.메서드 (prj_no) ? valueOf(prj_no)
+			LanguageVO detLanguageVO = new LanguageVO();
+			detLanguageVO.setPrj_no(Integer.valueOf(prj_no));
+			
+			languageService.deleteLang(detLanguageVO);
+			
+			//언어 인서트 호출
+			for (int i = 0; i < prj_langs.length; i++) {
+				LanguageVO intlanguageVO = new LanguageVO();
+				intlanguageVO.setPrj_no(Integer.valueOf(prj_no));
+				intlanguageVO.setLan_no(Integer.valueOf(prj_langs[i]));
+				languageService.insertLang(intlanguageVO);
+			}
 		}
 		
 		return new RedirectView("http://localhost:3000/Project");
@@ -113,6 +136,7 @@ public class ProjectController {
 		String prj_end_date = req.getParameter("prj_end_date");
 		String prj_lang = req.getParameter("prj_lang");
 		String[] prj_langs = prj_lang.split(",");
+		String[] mbr_nos = req.getParameter("mbr_nos").split(",");
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 	
@@ -127,12 +151,14 @@ public class ProjectController {
 		
 		int result = projectService.insertProjectInfo(intProjectVO);
 		if (result > 0) {
-			PrjMbrVO intProjectMbrVO = new PrjMbrVO();
 			int mbr_posi = 1;
-			intProjectMbrVO.setMbr_no(Integer.valueOf(mbr_no));
-			intProjectMbrVO.setPrj_no(prj_no);
-			intProjectMbrVO.setMbr_posi(mbr_posi);
-			int resultmbr = projectService.insertProjectMbrInfo(intProjectMbrVO);
+			for (int i = 0; i < mbr_nos.length; i++) {
+				PrjMbrVO proMbrVO = new PrjMbrVO();
+				proMbrVO.setMbr_no(Integer.valueOf(mbr_nos[i]));
+				proMbrVO.setPrj_no(prj_no);
+				proMbrVO.setMbr_posi(mbr_posi);
+				projectService.insertProjectMbrInfo(proMbrVO);
+			}
 			for (int i = 0; i < prj_langs.length; i++) {
 				LanguageVO intlanguageVO = new LanguageVO();
 				intlanguageVO.setPrj_no(prj_no);
@@ -160,10 +186,6 @@ public class ProjectController {
 		String mbr_no = req.getParameter("mbr_no");
 		String prj_no = req.getParameter("prj_no");
 		String mbr_posi = req.getParameter("mbr_posi");
-		
-		System.out.println(mbr_no);
-		System.out.println(prj_no);
-		System.out.println(mbr_posi);
 		
 		PrjMbrVO intProjectMbrVO = new PrjMbrVO();
 		intProjectMbrVO.setMbr_no(Integer.valueOf(mbr_no));

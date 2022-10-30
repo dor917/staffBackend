@@ -53,6 +53,12 @@ public class ProjectServiceImpl implements ProjectSerivce{
 		// TODO Auto-generated method stub
 		return projectDAO.getProjectInfo(prj_no);
 	}
+
+	@Override
+	public int deleteProjectMbrInfoByPrjNo(String prj_no) {
+		return projectDAO.deleteProjectMbrInfoByPrjNo(prj_no);
+		
+	}
 }
 
 

@@ -94,4 +94,34 @@
 			AND ROWNUM &lt;= 5
 	</select>
 
+	
+	<select id="getProjecMbrtList" parameterType="String" resultType="com.staff.model.UserVO">
+		SELECT
+			mbr_no,
+			mbr_nm,
+			mbr_email,
+			mbr_pw,
+			mbr_phone,
+			mbr_cont,
+			mbr_addr,
+			mbr_web,
+			mbr_twit,
+			mbr_insta,
+			mbr_face,
+			mbr_brd,
+			sys_reg_date
+		FROM
+			MBR_BASE
+		WHERE
+			MBR_NO IN 
+			(
+			SELECT
+				MBR_NO
+			FROM
+				PRJ_MBR_BASE
+			WHERE
+				PRJ_NO = #{prj_no})
+	</select>
+
+
 </mapper>

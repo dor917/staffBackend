@@ -15,4 +15,5 @@ public interface ProjectSerivce {
 	public int deleteProjectMbrInfo(PrjMbrVO detProjectVO);
 	public int selectseq();
 	public ProjectVO getProjectInfo(String prj_no);
+	public int deleteProjectMbrInfoByPrjNo(String prj_no);
 }

@@ -15,5 +15,6 @@ public interface UserService {
 	public int insertMbrInfo(UserVO intUserVO);
 	public int selectseq();
 	public ArrayList<UserVO> selectMbrNm(String mbr_nm);
+	public ArrayList<UserVO> getProjecMbrtList(String prj_no);
 
 }

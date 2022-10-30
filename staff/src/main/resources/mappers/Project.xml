@@ -82,4 +82,10 @@
 		DELETE FROM PRJ_MBR_BASE
 		WHERE mbr_no = #{mbr_no} and prj_no = #{prj_no}
 	</delete>
+	
+	<delete id="deleteProjectMbrInfoByPrjNo" parameterType="String">
+		DELETE FROM PRJ_MBR_BASE
+		WHERE prj_no = #{prj_no}
+	</delete>
+	
 </mapper>
