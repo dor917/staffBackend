@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.staff.dao.ProjectSvnDAO">
+	<select id="getProjectSvnInfo" parameterType="String" resultType="com.staff.model.ProjectSvnVO">
+		SELECT
+			revision_no,
+			prj_no,
+			rev_comment,
+			sys_reg_date
+		FROM
+			PRJ_REVISION_BASE
+		WHERE
+			prj_no = #{prj_no}
+	</select>
+
+	<insert id="insertProjectSvnInfo" parameterType="com.staff.model.ProjectSvnVO">
+		INSERT INTO PRJ_REVISION_BASE(revision_no, prj_no, rev_comment, sys_reg_date)
+		VALUES (REVISION_SEQ.nextval, 
+				#{prj_no},
+				#{rev_comment}, 
+				SYSDATE)
+	</insert>
+	
+	<update id="updateProjectSvnInfo" parameterType="com.staff.model.ProjectSvnVO">
+		UPDATE PRJ_REVISION_BASE
+		SET
+			revision_no = #{revision_no},
+			prj_no = #{prj_no},
+			rev_comment = #{rev_comment}
+		WHERE 
+			revision_no = #{revision_no}
+	</update>
+
+	<delete id="deleteProjectSvnInfo" parameterType="com.staff.model.ProjectSvnVO">
+		DELETE FROM PRJ_REVISION_BASE
+		WHERE revision_no = #{revision_no}
+	</delete>
+</mapper>
