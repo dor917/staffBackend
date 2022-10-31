@@ -29,9 +29,7 @@ Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로
 
 <a href="https://spring.io/" target="_blank">                                                                                                                           <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/></a>                                                           <a href="https://aws.amazon.com/ko/ec2/?nc2=h_ql_prod_fs_ec2" target="_blank">                                                                                         <img src="https://img.shields.io/badge/Aws(Ec2)-FF9900?style=for-the-badge&logo=Amazon Ec2&logoColor=white"/></a>                                                       <a href="https://aws.amazon.com/ko/rds/?nc2=h_ql_prod_fs_rds/" target="_blank">                                                                                         <img src="https://img.shields.io/badge/Aws(Rds)-527FFF?style=for-the-badge&logo=Amazon Rds&logoColor=white"/></a>                                                     <a href="https://www.oracle.com/" target="_blank">                                                                                                                     <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white"/></a> 
 
-| :--------: | :--------: | :------: | :-----: |
 
-|   ![js]    |   ![ts]    | ![react] | ![node] |
 
 
 
