@@ -15,12 +15,12 @@
    * [3.2기능 2](###32기능-2)
    * [3.3기능 3](###33기능-3)
    * [3.4기능 4](###34기능-4)
-- [4.파일 입출력 ](#구현-기능)
+- [4.알고리즘, 모델링](#알고리즘, 모델링)
 
 
 ## 1.프로젝트 소개
 
-Stp-Project는 GitHub의 어려운 복잡한 이론과 세팅을 해야 한다는 단점을 보완을 하기위해 만든 웹사이트 입니다. 
+Stp-Project는 GitHub의 어려운 복잡한 이론과 세팅을 해야 한다는 단점을 보완을 하기위해 구상한  웹사이트 입니다. 
 Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로젝트를 하는 
 초보개발자들에게 맞게 간소화 하였으며 팀원들 간의 협동을 중심으로 일정을 조율하거나 프로젝트 코드의 변경사항을 알 수 있는 기능도 추가하였습니다.
 
@@ -33,9 +33,9 @@ Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로
 
 ### 2.1환경설정
   #### 1.Spring tool Suite
-다운로드(https://spring.io/tools)<br>
+  다운로드(https://spring.io/tools)<br>
   #### 1-1.Import->Existing Maven Projects<br>
-![image](https://user-images.githubusercontent.com/91938525/199014216-3c7a9634-9dc5-4e02-9d17-30b01c364d75.png)
+  ![image](https://user-images.githubusercontent.com/91938525/199014216-3c7a9634-9dc5-4e02-9d17-30b01c364d75.png)
   #### 1-2.Lombok후 Sts폴더에 저장
   다운로드(https://projectlombok.org/download)<br>
   #### 1-3.Lombok 설정
@@ -68,11 +68,15 @@ Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로
 
 
 ### 3.4기능 4
-
-
 <br>
 
-## 파일 입출력 로직
+## 4.모델링, 알고리즘
+### 4.1 DB모델링
+![image](https://user-images.githubusercontent.com/91938525/199028954-90e56d8b-fee3-429c-908b-466a08e5e947.png)
+### 4.2 파일 풀, 푸시 로직
+![image](https://user-images.githubusercontent.com/91938525/199029742-cf7ad7a1-343d-4a2f-a180-948763eee559.png)
+
+
 
 
 
