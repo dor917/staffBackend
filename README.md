@@ -9,6 +9,7 @@
 - [1.프로젝트 소개](#프로젝트-소개)
    * [1.1.팀원 소개](#팀원-소개)
 - [2.기술 스택](#2.기술-스택)
+- * [2.1 환경설정](###31기능-1)
 - [3.구현 기능](#구현-기능)
    * [3.1기능 1](###31기능-1)
    * [3.2기능 2](###32기능-2)
@@ -28,13 +29,19 @@ Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로
 ## 2.기술 스택
 
 <a href="https://spring.io/" target="_blank">                                                                                                                           <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/></a>                                                           <a href="https://aws.amazon.com/ko/ec2/?nc2=h_ql_prod_fs_ec2" target="_blank">                                                                                         <img src="https://img.shields.io/badge/Aws(Ec2)-FF9900?style=for-the-badge&logo=Amazon Ec2&logoColor=white"/></a>                                                       <a href="https://aws.amazon.com/ko/rds/?nc2=h_ql_prod_fs_rds/" target="_blank">                                                                                         <img src="https://img.shields.io/badge/Aws(Rds)-527FFF?style=for-the-badge&logo=Amazon Rds&logoColor=white"/></a>                                                     <a href="https://www.oracle.com/" target="_blank">                                                                                                                     <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white"/></a> 
-
-
-
-
-
 <br>
 
+### 2.1환경설정
+  #### 1.Spring tool Suite
+다운로드(https://spring.io/tools)<br>
+  #### 1-1.Import->Existing Maven Projects<br>
+![image](https://user-images.githubusercontent.com/91938525/199014216-3c7a9634-9dc5-4e02-9d17-30b01c364d75.png)
+  #### 1-2.Lombok후 Sts폴더에 저장
+  다운로드(https://projectlombok.org/download)<br>
+  #### 1-3.Lombok 설정
+  실행->Specify location->Spting tool Suite지정->Install/Update
+  #### 1-4. Maven 업데이트
+  프로젝트 우클릭->Maven->Maven Update Project
 
 
 ## 3.구현 기능
@@ -42,14 +49,21 @@ Github의 번거로운 세팅 과정과 안에 복잡한 로직을 미니 프로
 
 
 ### 3.1기능 1
-
+#### 로그인
+![image](https://user-images.githubusercontent.com/91938525/199017312-9930ee69-98de-492c-98d5-ea15fecf7530.png)
 
 
 ### 3.2기능 2
+#### 메인화면
+![image](https://user-images.githubusercontent.com/91938525/199019683-cfa7008d-528e-42d8-86b5-64774d7ef346.png)
+
 
 
 
 ### 3.3기능 3
+#### 캘린더
+![image](https://user-images.githubusercontent.com/91938525/199019907-8565a791-d850-49d0-a38f-a645198e13e3.png)
+
 
 
 
