@@ -25,6 +25,13 @@
 Stp-Project는 GitHub의 어려운 복잡한 이론과 세팅을 해야 한다는 단점을 보완을 하기위해 구상한  웹사이트 입니다. 
 Github의 번거로운 세팅과 복잡한 로직을 미니 프로젝트를 하는 
 초보개발자들에게 맞게 간소화 하였으며 팀원들 간의 협동을 중심으로 일정을 조율하거나 프로젝트 코드의 변경사항을 알 수 있는 기능도 추가하였습니다.
+### 1.1팀원 소개
+#### 1.1.1 [정지영(팀장)](https://github.com/waitzero)
+Aws(Ec2), Aws(Rds), Spring(User Repository, Chat)
+#### 1.1.2 [조재현(팀원)](https://github.com/twghy)
+Spring(Calendar, Filelist, Chat), DB(Oracle)
+#### 1.1.3 [나호연(팀원)](https://github.com/nahoyeon)
+React(Caleandar, Filelist, Repository, Chat)
 
 <br>
 
