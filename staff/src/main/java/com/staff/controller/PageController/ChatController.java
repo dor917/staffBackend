@@ -28,7 +28,7 @@ import com.staff.model.ChatVO;
 @RestController
 public class ChatController {
 	final static String ID = "staff";
-	final static String IP = "54.180.134.66";
+	final static String IP = "18.188.244.201";
 	final static int SSHPORT = 22;
 	final static int CHATPORT = 1213;
 	final static String PW = "staff123";
