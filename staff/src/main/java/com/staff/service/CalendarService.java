@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.staff.model.CalendarVO;
 
-@Service
+
 public interface CalendarService {
 	
 	ArrayList<CalendarVO> getPrjCalendarList(String prj_no);

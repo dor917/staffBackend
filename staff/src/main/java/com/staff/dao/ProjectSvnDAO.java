@@ -16,4 +16,7 @@ public interface ProjectSvnDAO {
 	public int updateProjectSvnInfo(ProjectSvnVO uptProjectSvnVO);
 	
 	public int deleteProjectSvnInfo(ProjectSvnVO detProjectSvnVO);
+	
+	public String getRevisionNo();
+	
 }

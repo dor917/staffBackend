@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.staff.model.AlarmVO;
 
 
-@Service
+
 public interface AlarmService {
 
 	public ArrayList<AlarmVO> getPrjAlarmList(String alarm_no);

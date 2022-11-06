@@ -23,7 +23,6 @@ import com.staff.service.ProjectServiceImpl;
 import com.staff.service.UserServiceImpl;
 
 @RestController
-@MapperScan(basePackages = "com.staff.service")
 public class ProjectController {
 	@Autowired(required=true)
 	ProjectServiceImpl projectService;

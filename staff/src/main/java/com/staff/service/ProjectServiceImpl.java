@@ -2,6 +2,7 @@ package com.staff.service;
 
 import java.util.ArrayList;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import com.staff.model.PrjMbrVO;
 import com.staff.model.ProjectVO;
 
 @Service
+@MapperScan("com.staff.dao")
 public class ProjectServiceImpl implements ProjectSerivce{
 
 	@Autowired

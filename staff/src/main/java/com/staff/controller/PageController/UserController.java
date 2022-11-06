@@ -22,7 +22,6 @@ import com.staff.model.UserVO;
 import com.staff.service.UserServiceImpl;
 
 @RestController
-@MapperScan(basePackages = "com.staff.service")
 public class UserController {
 
 	@Autowired(required = true)

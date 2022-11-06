@@ -2,6 +2,7 @@ package com.staff.service;
 
 import java.util.ArrayList;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import com.staff.dao.ProjectSvnDAO;
 import com.staff.model.ProjectSvnVO;
 
 @Service
+@MapperScan("com.staff.dao")
 public class ProjectSvnServiceImpl implements ProjectSvnSerivce{
 
 	@Autowired
@@ -33,6 +35,11 @@ public class ProjectSvnServiceImpl implements ProjectSvnSerivce{
 	public int deleteProjectSvnInfo(ProjectSvnVO detProjectSvnVO) {
 		return projectSvnDAO.deleteProjectSvnInfo(detProjectSvnVO);
 	}
+	
+	@Override
+	public String getRevisionNo() {
+		return projectSvnDAO.getRevisionNo();
+	};
 }
 
 

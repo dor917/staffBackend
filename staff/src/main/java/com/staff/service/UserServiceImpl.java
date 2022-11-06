@@ -12,7 +12,7 @@ import com.staff.dao.MemberDAO;
 import com.staff.model.UserVO;
 
 @Service
-@MapperScan(basePackages = "com.staff.dao")
+@MapperScan("com.staff.dao")
 public class UserServiceImpl implements UserService{
 	@Autowired
 	MemberDAO memberDAO;

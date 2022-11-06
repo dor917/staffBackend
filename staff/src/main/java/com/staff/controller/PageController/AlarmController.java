@@ -16,7 +16,6 @@ import com.staff.model.AlarmVO;
 import com.staff.service.AlarmServiceImpl;
 
 @RestController
-@MapperScan(basePackages = "com.staff.service")
 public class AlarmController {
 	
 	@Autowired(required=true)

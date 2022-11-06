@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.staff.dao.ProjectSvnDAO">
+	<select id="getRevisionNo" resultType="String">
+		SELECT
+			REVISION_SEQ.nextval
+		FROM
+			dual
+	</select>
 	<select id="getProjectSvnInfo" parameterType="String" resultType="com.staff.model.ProjectSvnVO">
 		SELECT
 			revision_no,
 			prj_no,
 			rev_comment,
-			sys_reg_date
+			rev_file_name,
+			TO_CHAR(sys_reg_date, 'YYYY-MM-DD') AS sys_reg_date_str
 		FROM
 			PRJ_REVISION_BASE
 		WHERE
 			prj_no = #{prj_no}
+			ORDER BY revision_no DESC
+	</select>
+	<select id="getProjectSvnInfoFileName" parameterType="String" resultType="com.staff.model.ProjectSvnVO">
+		SELECT
+			revision_no,
+			prj_no,
+			rev_comment,
+			rev_file_name,
+			TO_CHAR(sys_reg_date, 'YYYY-MM-DD') AS sys_reg_date_str
+		FROM  PRJ_REVISION_BASE
+		WHERE prj_no = #{prj_no} AND rev_file_name = #{rev_file_name}
 	</select>
 
 	<insert id="insertProjectSvnInfo" parameterType="com.staff.model.ProjectSvnVO">
-		INSERT INTO PRJ_REVISION_BASE(revision_no, prj_no, rev_comment, sys_reg_date)
-		VALUES (REVISION_SEQ.nextval, 
+		INSERT INTO PRJ_REVISION_BASE(revision_no, prj_no, rev_comment, rev_file_name, sys_reg_date)
+		VALUES (#{revision_no}, 
 				#{prj_no},
-				#{rev_comment}, 
+				#{rev_comment},
+				#{rev_file_name},
 				SYSDATE)
 	</insert>
 	
@@ -26,7 +45,8 @@
 		SET
 			revision_no = #{revision_no},
 			prj_no = #{prj_no},
-			rev_comment = #{rev_comment}
+			rev_comment = #{rev_comment}, 
+			rev_file_name =  #{rev_file_name}
 		WHERE 
 			revision_no = #{revision_no}
 	</update>

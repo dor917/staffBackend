@@ -1,0 +1,3 @@
+db
+admin / staff123
+dba_staff / staff123

@@ -8,9 +8,11 @@ import com.staff.model.AlarmVO;
 
 @Mapper
 public interface AlarmDAO {
+	
 	public ArrayList<AlarmVO> getPrjAlarmList(String alarm_no);
+	
 	public int insertAlarmInfo(AlarmVO intAlarmVO);
+	
 	public int deleteAlarmInfo(AlarmVO detAlarmVO);
-
 
 }

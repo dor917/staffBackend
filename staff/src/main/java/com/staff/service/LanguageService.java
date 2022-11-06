@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.staff.model.LanguageVO;
 
-@Service
+
 public interface LanguageService {
 	public ArrayList<LanguageVO> selectPrjLang(int prj_no);
 
