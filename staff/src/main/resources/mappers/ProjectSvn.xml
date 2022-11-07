@@ -20,7 +20,7 @@
 			prj_no = #{prj_no}
 			ORDER BY revision_no DESC
 	</select>
-	<select id="getProjectSvnInfoFileName" parameterType="String" resultType="com.staff.model.ProjectSvnVO">
+	<select id="getProjectSvnInfoFileName" parameterType="com.staff.model.ProjectSvnVO" resultType="com.staff.model.ProjectSvnVO">
 		SELECT
 			revision_no,
 			prj_no,
@@ -28,7 +28,7 @@
 			rev_file_name,
 			TO_CHAR(sys_reg_date, 'YYYY-MM-DD') AS sys_reg_date_str
 		FROM  PRJ_REVISION_BASE
-		WHERE prj_no = #{prj_no} AND rev_file_name = #{rev_file_name}
+		WHERE prj_no = #{prj_no} AND rev_file_name LIKE '%'||#{rev_file_name}||'%'
 	</select>
 
 	<insert id="insertProjectSvnInfo" parameterType="com.staff.model.ProjectSvnVO">

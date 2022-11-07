@@ -17,4 +17,6 @@ public interface ProjectSvnSerivce {
 	public int deleteProjectSvnInfo(ProjectSvnVO detProjectSvnVO);
 	
 	public String getRevisionNo();
+	
+	public ArrayList<ProjectSvnVO> getProjectSvnInfoByName(ProjectSvnVO intProjectSvnVO);
 }

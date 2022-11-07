@@ -39,6 +39,11 @@ public class ProjectSvnServiceImpl implements ProjectSvnSerivce{
 	@Override
 	public String getRevisionNo() {
 		return projectSvnDAO.getRevisionNo();
+	}
+	@Override
+	public ArrayList<ProjectSvnVO> getProjectSvnInfoByName(ProjectSvnVO intProjectSvnVO) {
+		// TODO Auto-generated method stub
+		return projectSvnDAO.getProjectSvnInfoFileName(intProjectSvnVO);
 	};
 }
 
