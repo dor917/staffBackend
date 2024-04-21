@@ -29,7 +29,7 @@ Github의 번거로운 세팅과 복잡한 로직을 미니 프로젝트를 하�
 #### 1.1.1 [김돈하](https://github.com/dor917)
 Aws, Spring, React, Infra, DBA
 #### 1.1.2 [정지영](https://github.com/waitzero)
-Aws(Ec2), Aws(Rds), Spring(User Repository, Chat)
+Aws(Ec2), Spring(User Repository), React(Mypage, login, Signup)
 #### 1.1.3 [조재현](https://github.com/twghy)
 Spring(Calendar, Filelist, Chat), DB(Oracle)
 #### 1.1.4 [나호연](https://github.com/nahoyeon)
